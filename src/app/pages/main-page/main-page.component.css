@@ -251,7 +251,7 @@
 }
 
 .title-label {
-  margin-top: 50px;
+  margin-top: 2rem;
   font-size: 32px;
   text-transform: uppercase;
   width: 100%;
@@ -260,12 +260,13 @@
 }
 
 .subtitle-label {
-  margin-top: 5px;
   font-family: "PT Sans";
   font-size: 20px;
   font-style: italic;
   width: 100%;
+  padding: 15px 20px 0 20px;
   text-align: center;
+  color: rgb(106, 106, 106);
 }
 
 .divider-line {
@@ -277,7 +278,7 @@
 .divider-line div {
   margin: 25px 0;
   width: 100px;
-  border-top: 2px solid #000;
+  border-top: 1px solid rgb(106,106,106);
 }
 
 .about-school-text {
@@ -289,6 +290,10 @@
 
 .about-school-photo-wrapper {
   background: #83c2d5;
+}
+
+.about-school-photo-xs {
+  display: none;
 }
 
 .lesson-filter-buttons {
@@ -631,6 +636,7 @@
 
   .menu-button {
     display: flex;
+    margin-left: 15px;
   }
 
   .round-icon {
@@ -641,15 +647,35 @@
   .border-icon-primary {
     border: none;
   }
+  .band {
+    background: url('../../../assets/img/band-xs.jpg') no-repeat !important;
+    background-size: cover !important;
+    height: 9rem;
+  }
+  .about-school-photo-xs {
+    margin-top: 50px;
+    display: block;
+  }
+  .about-school-photo-md {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .about-school-photo {
     height: 100%;
+    margin-top: 50px;
   }
   .band {
     background: url('../../../assets/img/band-sm.jpg') no-repeat;
     background-size: cover;
+  }
+  .title-label {
+    font-size: 24px !important;
+    font-weight: 500;
+  }
+  .subtitle-label {
+    font-size: 16px;
   }
 }
 
@@ -721,6 +747,10 @@
 
   .contact-social-panel {
     margin-right: 0;
+  }
+  .band {
+    background: url('../../../assets/img/band-md.jpg') no-repeat;
+    background-size: cover;
   }
 }
 
