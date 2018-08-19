@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Utils} from '../../utils/utils';
-import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
+import {AccessibilityConfig, Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 
 @Component({
   selector: 'app-main-page',
@@ -13,55 +13,130 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   images: Image[] = [
     new Image(0, {
-      img: 'http://localhost:4200/assets/img/gallery/1.png'
+      img: 'http://localhost:4200/assets/img/gallery/1.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(1, {
-      img: 'http://localhost:4200/assets/img/gallery/2.png'
+      img: 'http://localhost:4200/assets/img/gallery/2.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(2, {
-      img: 'http://localhost:4200/assets/img/gallery/3.png'
+      img: 'http://localhost:4200/assets/img/gallery/3.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(3, {
       img: 'http://localhost:4200/assets/img/gallery/4.png'
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(4, {
-      img: 'http://localhost:4200/assets/img/gallery/5.png'
+      img: 'http://localhost:4200/assets/img/gallery/5.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(5, {
-      img: 'http://localhost:4200/assets/img/gallery/6.png'
+      img: 'http://localhost:4200/assets/img/gallery/6.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(6, {
-      img: 'http://localhost:4200/assets/img/gallery/7.png'
+      img: 'http://localhost:4200/assets/img/gallery/7.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(7, {
-      img: 'http://localhost:4200/assets/img/gallery/8.png'
+      img: 'http://localhost:4200/assets/img/gallery/8.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(8, {
-      img: 'http://localhost:4200/assets/img/gallery/9.png'
+      img: 'http://localhost:4200/assets/img/gallery/9.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(9, {
-      img: 'http://localhost:4200/assets/img/gallery/10.png'
+      img: 'http://localhost:4200/assets/img/gallery/10.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(10, {
-      img: 'http://localhost:4200/assets/img/gallery/11.png'
+      img: 'http://localhost:4200/assets/img/gallery/11.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(11, {
-      img: 'http://localhost:4200/assets/img/gallery/12.png'
+      img: 'http://localhost:4200/assets/img/gallery/12.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(12, {
-      img: 'http://localhost:4200/assets/img/gallery/13.png'
+      img: 'http://localhost:4200/assets/img/gallery/13.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(13, {
-      img: 'http://localhost:4200/assets/img/gallery/14.png'
+      img: 'http://localhost:4200/assets/img/gallery/14.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(14, {
-      img: 'http://localhost:4200/assets/img/gallery/15.png'
+      img: 'http://localhost:4200/assets/img/gallery/15.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     }),
     new Image(15, {
-      img: 'http://localhost:4200/assets/img/gallery/16.png'
-    }),
-    new Image(16, {
-      img: 'http://localhost:4200/assets/img/gallery/17.png'
+      img: 'http://localhost:4200/assets/img/gallery/16.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
     })
   ];
 
@@ -171,8 +246,20 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       }
   }
 
-  onClickPhoto(id: number) {
+  /*onClickPhoto(id: number) {
     this.galleryService.openGallery(9, id);
+  }*/
+
+  showMoreImgs() {
+    const newIng = new Image(16, {
+      img: 'http://localhost:4200/assets/img/gallery/17.png',
+      title: ' ',
+      alt: ' '
+    }, {
+      img: '',
+      title: ' '
+    });
+    this.images = [...this.images, newIng];
   }
 }
 

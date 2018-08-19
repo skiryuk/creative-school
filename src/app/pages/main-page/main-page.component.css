@@ -494,7 +494,38 @@
 }
 
 ks-modal-gallery/deep/.plain-container {
-  display: none;
+  width:100%;
+  max-width:100%;
+  display: flex;
+  flex-direction: column !important;
+  flex-wrap: wrap;
+  height: 120vw;
+  font-size: 0;
+  overflow: hidden;
+}
+ks-modal-gallery/deep/.plain-container img.image {
+  width: 25% !important;
+  transition: .8s opacity;
+  cursor: pointer;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+ks-modal-gallery/deep/.plain-container img.image:nth-child(4n) {
+  page-break-after: always; /* CSS 2.1 syntax */
+}
+
+ks-modal-gallery/deep/.plain-container:hover img.image { opacity: 0.3; }
+ks-modal-gallery/deep/.plain-container:hover img.image:hover { opacity: 1; }
+
+/* fallback for earlier versions of Firefox */
+
+@supports not (flex-wrap: wrap) {
+  ks-modal-gallery/deep/.plain-container { display: block; }
+  ks-modal-gallery/deep/.plain-container img.image {
+    display: inline-block;
+    vertical-align: top;
+  }
 }
 
 .review-item {

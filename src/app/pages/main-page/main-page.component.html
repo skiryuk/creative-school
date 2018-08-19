@@ -187,7 +187,7 @@
 
 <!--<ngx-masonry-gallery [width]='300' [images]='getPhotoItems()'></ngx-masonry-gallery>-->
 
-<div class="photo-gallery">
+<!--<div class="photo-gallery">
   <img src="http://localhost:4200/assets/img/gallery/1.png" (click)="onClickPhoto(0)">
   <img src="http://localhost:4200/assets/img/gallery/2.png" (click)="onClickPhoto(1)">
   <img src="http://localhost:4200/assets/img/gallery/3.png" (click)="onClickPhoto(2)">
@@ -205,12 +205,12 @@
   <img src="http://localhost:4200/assets/img/gallery/15.png" (click)="onClickPhoto(14)">
   <img src="http://localhost:4200/assets/img/gallery/16.png" (click)="onClickPhoto(15)">
   <img src="http://localhost:4200/assets/img/gallery/17.png" (click)="onClickPhoto(16)">
-</div>
+</div>-->
 
 <ks-modal-gallery [id]="9" [modalImages]="images" [currentImageConfig]="{ description: customDescription }"></ks-modal-gallery>
 
 <div class="lessons-more-btn-panel">
-  <div class="lessons-more-btn">показать еще</div>
+  <div class="lessons-more-btn" (click)="showMoreImgs()">показать еще</div>
 </div>
 
 <div class="title-label">отзывы</div>
