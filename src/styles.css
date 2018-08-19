@@ -1,6 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 @import '~npm-font-open-sans/open-sans.css';
+@import "~pt-sans-cyrillic/index.css";
 
 html, body {
   display: flex;
@@ -11,6 +12,7 @@ body {
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0;
+  -webkit-text-size-adjust: none;
 }
 
 .mt15 {

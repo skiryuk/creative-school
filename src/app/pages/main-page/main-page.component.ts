@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
 import {Utils} from '../../utils/utils';
 import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 
@@ -140,6 +140,64 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     })
   ];
 
+  lessons = [{
+    id: 1,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo.png',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 2000,
+    date: '2018-02-10T11:30:00',
+    abonement: false
+  }, {
+    id: 2,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo2.jpg',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 0,
+    date: '2018-02-10T11:30:00',
+    abonement: true
+  }, {
+    id: 3,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo3.jpg',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 2000,
+    date: '2018-02-10T11:30:00',
+    abonement: false
+  }, {
+    id: 4,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo4.jpg',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 0,
+    date: '2018-02-10T11:30:00',
+    abonement: true
+  }, {
+    id: 5,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo.png',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 2000,
+    date: '2018-02-10T11:30:00',
+    abonement: false
+  }, {
+    id: 6,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo.png',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 0,
+    date: '2018-02-10T11:30:00',
+    abonement: true
+  }, {
+    id: 7,
+    name: 'правополушарное рисование для начинающих',
+    img: '../../../assets/img/lesson-photo.png',
+    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
+    price: 2000,
+    date: '2018-02-10T11:30:00',
+    abonement: false
+  }];
+
   customDescription: Description = {
     strategy: DescriptionStrategy.HIDE_IF_EMPTY
   };
@@ -157,66 +215,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
    this.initMap();
-  }
-
-  getLessons() {
-    return [{
-      id: 1,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo.png',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 2000,
-      date: '2018-02-10T11:30:00',
-      abonement: false
-    }, {
-      id: 2,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo2.jpg',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 0,
-      date: '2018-02-10T11:30:00',
-      abonement: true
-    }, {
-      id: 3,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo3.jpg',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 2000,
-      date: '2018-02-10T11:30:00',
-      abonement: false
-    }, {
-      id: 4,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo4.jpg',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 0,
-      date: '2018-02-10T11:30:00',
-      abonement: true
-    }, {
-      id: 5,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo.png',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 2000,
-      date: '2018-02-10T11:30:00',
-      abonement: false
-    }, {
-      id: 6,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo.png',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 0,
-      date: '2018-02-10T11:30:00',
-      abonement: true
-    }, {
-      id: 7,
-      name: 'правополушарное рисование для начинающих',
-      img: '../../../assets/img/lesson-photo.png',
-      description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-      price: 2000,
-      date: '2018-02-10T11:30:00',
-      abonement: false
-    }];
   }
 
   getFormattedDate(strDate: string): string {

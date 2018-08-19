@@ -72,7 +72,7 @@ export class Utils {
 
   static initYMap() {
     return new Promise((resolve, reject) => {
-      Utils.loadUrl('//api-maps.yandex.ru/2.1/?lang=ru_RU&coordorder=longlat').then(() => {
+      Utils.loadUrl('https://api-maps.yandex.ru/2.1/?lang=ru_RU&coordorder=longlat').then(() => {
         resolve((window as any).ymaps);
       }).catch(e => reject(e));
     });

@@ -34,6 +34,7 @@
     "mousetrap": "^1.6.2",
     "npm-font-open-sans": "^1.1.0",
     "path": "^0.12.7",
+    "pt-sans-cyrillic": "0.0.4",
     "rxjs": "^6.0.0",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
