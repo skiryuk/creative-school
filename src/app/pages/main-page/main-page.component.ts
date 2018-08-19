@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Utils} from '../../utils/utils';
-import {AccessibilityConfig, Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
+import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 
 @Component({
   selector: 'app-main-page',
@@ -144,12 +144,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     strategy: DescriptionStrategy.HIDE_IF_EMPTY
   };
 
-  constructor(protected galleryService: GalleryService) {
+  constructor() {
   }
 
   @HostListener('document:scroll', ['$event'])
   onScroll($event: Event): void {
-    this.isHeaderCollapse = $event.srcElement.firstElementChild.scrollTop > 0;
+    this.isHeaderCollapse = (<HTMLElement>$event.srcElement.getElementsByTagName('html')[0]).scrollTop > 0;
   }
 
   ngOnInit() {
