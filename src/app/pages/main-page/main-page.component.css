@@ -461,9 +461,10 @@
   text-align: center;
   margin-top: 10px;
   font-size: 15px;
+  padding: 0 15px;
 }
 
-.photo-gallery {
+/*.photo-gallery {
   width:100%;
   max-width:100%;
   display: flex;
@@ -483,15 +484,13 @@
 .photo-gallery:hover img { opacity: 0.3; }
 .photo-gallery:hover img:hover { opacity: 1; }
 
-/* fallback for earlier versions of Firefox */
-
 @supports not (flex-wrap: wrap) {
   .photo-gallery { display: block; }
   .photo-gallery img {
     display: inline-block;
     vertical-align: top;
   }
-}
+}*/
 
 ks-modal-gallery/deep/.plain-container {
   width:100%;
@@ -707,7 +706,7 @@ ks-modal-gallery/deep/.plain-container:hover img.image:hover { opacity: 1; }
   }
   .title-label {
     font-size: 24px !important;
-    padding: 0 20px;
+    padding: 0 10px;
     font-weight: 500;
   }
   .subtitle-label {
