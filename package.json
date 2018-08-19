@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "serve": "ng serve",
+    "serve": "ng serve --host=0.0.0.0 --disable-host-check",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -32,6 +32,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "mousetrap": "^1.6.2",
+    "npm-font-open-sans": "^1.1.0",
     "path": "^0.12.7",
     "rxjs": "^6.0.0",
     "web-animations-js": "^2.3.1",
