@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Utils} from '../../utils/utils';
+import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 
 @Component({
   selector: 'app-main-page',
@@ -10,7 +11,66 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   public isHeaderCollapse = false;
 
-  constructor() { }
+  images: Image[] = [
+    new Image(0, {
+      img: 'http://localhost:4200/assets/img/gallery/1.png'
+    }),
+    new Image(1, {
+      img: 'http://localhost:4200/assets/img/gallery/2.png'
+    }),
+    new Image(2, {
+      img: 'http://localhost:4200/assets/img/gallery/3.png'
+    }),
+    new Image(3, {
+      img: 'http://localhost:4200/assets/img/gallery/4.png'
+    }),
+    new Image(4, {
+      img: 'http://localhost:4200/assets/img/gallery/5.png'
+    }),
+    new Image(5, {
+      img: 'http://localhost:4200/assets/img/gallery/6.png'
+    }),
+    new Image(6, {
+      img: 'http://localhost:4200/assets/img/gallery/7.png'
+    }),
+    new Image(7, {
+      img: 'http://localhost:4200/assets/img/gallery/8.png'
+    }),
+    new Image(8, {
+      img: 'http://localhost:4200/assets/img/gallery/9.png'
+    }),
+    new Image(9, {
+      img: 'http://localhost:4200/assets/img/gallery/10.png'
+    }),
+    new Image(10, {
+      img: 'http://localhost:4200/assets/img/gallery/11.png'
+    }),
+    new Image(11, {
+      img: 'http://localhost:4200/assets/img/gallery/12.png'
+    }),
+    new Image(12, {
+      img: 'http://localhost:4200/assets/img/gallery/13.png'
+    }),
+    new Image(13, {
+      img: 'http://localhost:4200/assets/img/gallery/14.png'
+    }),
+    new Image(14, {
+      img: 'http://localhost:4200/assets/img/gallery/15.png'
+    }),
+    new Image(15, {
+      img: 'http://localhost:4200/assets/img/gallery/16.png'
+    }),
+    new Image(16, {
+      img: 'http://localhost:4200/assets/img/gallery/17.png'
+    })
+  ];
+
+  customDescription: Description = {
+    strategy: DescriptionStrategy.HIDE_IF_EMPTY
+  };
+
+  constructor(protected galleryService: GalleryService) {
+  }
 
   @HostListener('document:scroll', ['$event'])
   onScroll($event: Event): void {
@@ -109,6 +169,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         mapObject.setBounds(markersCollection.getBounds());
         mapObject.setZoom(17);
       }
+  }
+
+  onClickPhoto(id: number) {
+    this.galleryService.openGallery(9, id);
   }
 }
 

@@ -477,6 +477,7 @@
 .photo-gallery img {
   width: 25%;
   transition: .8s opacity;
+  cursor: pointer;
 }
 
 .photo-gallery:hover img { opacity: 0.3; }
@@ -492,6 +493,10 @@
   }
 }
 
+ks-modal-gallery/deep/.plain-container {
+  display: none;
+}
+
 .review-item {
   background: #83c2d5;
   color: #000;
@@ -499,6 +504,7 @@
   align-items: center;
   display: flex;
   text-align: center;
+  font-size: 15px;
   font-weight: bold;
   padding: 0 20px;
 }
