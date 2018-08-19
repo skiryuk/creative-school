@@ -283,9 +283,13 @@
 
 .about-school-text {
   background: #83c2d5;
-  padding: 30px;
-  font-size: 1.3em;
-  font-family: "PT Sans";
+  padding: 40px 50px;
+  font-size: 16px;
+}
+
+.hello-label {
+  font-size: 28px;
+  font-weight: 500;
 }
 
 .about-school-photo-wrapper {
@@ -456,6 +460,7 @@
 .advantage-description {
   text-align: center;
   margin-top: 10px;
+  font-size: 15px;
 }
 
 .photo-gallery {
@@ -542,7 +547,7 @@
   background-color: #b7007a;
   color: #fff;
   text-transform: uppercase;
-  margin: 15px;
+  margin: 15px 0 15px 15px;
   font-size: 15px;
 }
 
@@ -652,13 +657,6 @@
     background-size: cover !important;
     height: 9rem;
   }
-  .about-school-photo-xs {
-    margin-top: 50px;
-    display: block;
-  }
-  .about-school-photo-md {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -672,10 +670,28 @@
   }
   .title-label {
     font-size: 24px !important;
+    padding: 0 20px;
     font-weight: 500;
   }
   .subtitle-label {
-    font-size: 16px;
+    font-size: 17px;
+  }
+  .about-school-photo-xs {
+    margin-top: 50px;
+    display: block;
+  }
+  .about-school-photo-md {
+    display: none;
+  }
+  .about-school-text {
+    font-size: 17px;
+  }
+  .hello-label {
+    text-align: center;
+    font-size: 24px;
+  }
+  .hello-divider-line {
+    justify-content: center !important;
   }
 }
 

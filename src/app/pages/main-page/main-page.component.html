@@ -2,10 +2,11 @@
 <div class="header" [ngClass]="{ collapse: isHeaderCollapse }">
   <div class="header-logo"></div>
   <div class="header-menu">
-    <div class="header-menu-item">О нас</div>
     <div class="header-menu-item">Занятия</div>
+    <div class="header-menu-item">О нас</div>
     <div class="header-menu-item">Фото с занятий</div>
     <div class="header-menu-item">Отзывы</div>
+    <div class="header-menu-item">5 лет</div>
     <div class="header-menu-item">Контакты</div>
   </div>
   <div class="contacts-panel">
@@ -53,10 +54,11 @@
   </div>
 </div>
 <div class="menu">
-  <div class="menu-item">О нас</div>
   <div class="menu-item">Занятия</div>
+  <div class="menu-item">О нас</div>
   <div class="menu-item">Фото с занятий</div>
   <div class="menu-item">Отзывы</div>
+  <div class="menu-item">5 лет</div>
   <div class="menu-item">Контакты</div>
 </div>
 <div class="band"></div>
@@ -101,18 +103,21 @@
 
 
 <div class="title-label" style="background: #393778; color: #fff; padding-top: 30px">о нашей школе</div>
-<div class="subtitle-label" style="background: #393778; color: #fff">Здесь Вы за 1 день научитесь рисовать, даже если никогда раньше не брали кисточку в руки</div>
-<div class="divider-line" style="background: #393778">
+<div class="subtitle-label" style="background: #393778; color: #fff; padding-bottom: 25px">Здесь Вы за 1 день научитесь рисовать, даже если никогда раньше не брали кисточку в руки</div>
+<div class="divider-line" style="background: #393778; display: none">
   <div style="border-top: 1px solid #fff"></div>
 </div>
 <div class="container-fluid no-padding-lr about-school-panel">
   <div class="row no-gutters">
     <div class="col-xl-8 col-lg-7 col-md-6 order-2 order-md-1 about-school-text">
+      <div class="hello-label">Добро пожаловать!</div>
+      <div class="hello-divider-line divider-line" style="justify-content: flex-start">
+        <div style="border-top: 1px solid #000"></div>
+      </div>
       Школа креатива специализируется на обучении рисованию начинающих с нуля. <br><br>
 
       Вы можете написать красивую картину уже на первом занятии! <br>
-      Это реально, даже если Вы никогда не брали кисточку в руки! <br>
-      Для достижения такого впечатляющего результата используется <b>уникальный метод </b><br><br>
+      Для достижения такого впечатляющего результата используется <b>уникальный метод </b><br>
 
       В Москве метод преподается 7 лет,  руководитель школы <b> Павел Сивков</b><br><br>
 
@@ -121,13 +126,14 @@
       Каждым участником выполняется 7, 8 живописных работ разными техниками
       на занятиях "правополушарного рисования",  а на наших мастер-классах
       есть возможность нарисовать большую работу на холсте.<br><br>
-      Продолжительность занятий 3,5 - 4 часа<br>
+      Продолжительность занятий 3,5 - 4 часа<br><br>
       <b>Главная задача нашей школы – </b><br>
       <b>раскрытие новых возможностей творческого потенциала человека</b>
     </div>
     <div class="about-school-photo-wrapper col-xl-4 col-lg-5 col-md-6 order-1 order-md-2 d-flex align-items-center justify-content-center">
-      <img class="about-school-photo-md" src="../../../assets/img/about-school-photo-md.png">
-      <img class="about-school-photo-xs" src="../../../assets/img/about-school-photo-xs.png">
+      <!--<img class="about-school-photo-md" src="../../../assets/img/about-school-photo-md.png">
+      <img class="about-school-photo-xs" src="../../../assets/img/about-school-photo-xs.png">-->
+      <iframe width="100%" height="370" src="http://www.youtube.com/embed/UKvwGRh7puw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </div>
 </div>
@@ -140,7 +146,7 @@
   <div class="row">
     <div class="advantage-column col-md-4">
       <div class="advantage-image">
-        <img src="../../../assets/img/palette.png">
+        <img src="../../../assets/img/palette.png" style="width: 131px; height: 131px; margin: 10px 0 10px 45px;">
       </div>
       <div class="advantage-title">Уникальный метод обучения рисованию</div>
       <div class="advantage-description">В основе метода – уникальные
@@ -163,7 +169,7 @@
     </div>
     <div class="advantage-column col-md-4">
       <div class="advantage-image">
-        <img src="../../../assets/img/materials.png">
+        <img src="../../../assets/img/materials.png" style="width: 121px; height: 121px; margin: 15px 0 15px 15px;">
       </div>
       <div class="advantage-title">Все материалы включены в стоимость</div>
       <div class="advantage-description">На занятия в школу креатива ничего приносить
@@ -225,7 +231,7 @@
   <div class="lessons-more-btn">показать еще</div>
 </div>
 
-<div class="title-label">5 лет</div>
+<div class="title-label">5 лет нашей школе</div>
 <div class="divider-line">
   <div></div>
 </div>
@@ -258,7 +264,7 @@
       <div class="divider-line">
         <div></div>
       </div>
-      <div style="text-align: center">ЗАПОЛНИТЕ ЭТУ ФОРМУ ИЛИ ЗВОНИТЕ <b>+7 (499) 551-56-15, 277-50-74</b><br>
+      <div style="text-align: center">ЗАПОЛНИТЕ ЭТУ ФОРМУ ИЛИ ЗВОНИТЕ <br><b>+7 (499) 551-56-15, 277-50-74</b><br>
         МЫ С УДОВОЛЬСТВИЕМ ВАМ ПОМОЖЕМ!</div>
       <form>
         <div class="row mt15">
