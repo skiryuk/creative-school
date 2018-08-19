@@ -748,6 +748,7 @@ ks-modal-gallery/deep/.plain-container:hover img.image:hover { opacity: 1; }
 
   .send-message-btn {
     margin-left: 0;
+    margin-right: 15px !important;
   }
 }
 
