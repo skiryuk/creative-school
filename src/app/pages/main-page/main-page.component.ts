@@ -205,9 +205,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   constructor() {
   }
 
-  @HostListener('document:scroll', ['$event'])
-  onScroll($event: Event): void {
-    this.isHeaderCollapse = (<HTMLElement>$event.srcElement.getElementsByTagName('html')[0]).scrollTop > 0;
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event: Event): void {
+    const scrollTop = (<any>$event.target).scrollingElement.scrollTop || (<any>$event.target).documentElement.scrollTop;
+    this.isHeaderCollapse = scrollTop > 100;
   }
 
   ngOnInit() {
