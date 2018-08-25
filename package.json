@@ -32,6 +32,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "mousetrap": "^1.6.2",
+    "ngx-page-scroll": "^5.0.0",
     "npm-font-open-sans": "^1.1.0",
     "path": "^0.12.7",
     "pt-sans-cyrillic": "0.0.4",

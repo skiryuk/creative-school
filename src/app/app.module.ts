@@ -9,6 +9,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
+import {NgxPageScrollModule} from 'ngx-page-scroll';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    ModalGalleryModule.forRoot()
+    ModalGalleryModule.forRoot(),
+    NgxPageScrollModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

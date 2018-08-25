@@ -1,10 +1,9 @@
 
-
 <!--==========================
   Header
   ============================-->
 <header id="header" [ngClass]="{ 'header-fixed': isHeaderCollapse }">
-  <div class="container">
+  <div class="fluid-container">
 
     <div id="logo" class="pull-left">
       <a href="#">
@@ -15,12 +14,12 @@
 
     <nav id="nav-menu-container">
       <ul class="nav-menu">
-        <li class="menu-active"><a href="#hero">О нас</a></li>
-        <li><a href="#about">Занятия</a></li>
-        <li><a href="#services">Фото с занятий</a></li>
-        <li><a href="#portfolio">Отзывы</a></li>
-        <li><a href="#team">5 лет</a></li>
-        <li><a href="#contact">Контакты</a></li>
+        <li class="menu-active"><a href="#hero" pageScroll [pageScrollOffset]="0" [pageScrollDuration]="1500" [pageScrollEasing]="easing">О нас</a></li>
+        <li><a href="#events" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Занятия</a></li>
+        <li><a href="#photos" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Фото с занятий</a></li>
+        <li><a href="#reviews" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Отзывы</a></li>
+        <li><a href="#five-years" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">5 лет</a></li>
+        <li><a href="#contacts" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Контакты</a></li>
       </ul>
       <button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>
     </nav><!-- #nav-menu-container -->
@@ -32,9 +31,9 @@
   ============================-->
 <section id="hero">
   <div class="hero-container">
-    <h1>Добро пожаловать!</h1>
+    <h1>Школа креатива</h1>
     <h2>Здесь Вы за 1 день научитесь рисовать, даже если никогда раньше не брали кисточку в руки</h2>
-    <a href="#about" class="btn-get-started">Узнать подробнее</a>
+    <a href="#about" class="btn-get-started" pageScroll [pageScrollOffset]="70" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Узнать подробнее</a>
   </div>
 </section><!-- #hero -->
 
@@ -44,218 +43,255 @@
 <section id="about">
   <div class="container">
     <div class="row about-container">
-
       <div class="col-lg-6 content order-lg-1 order-2">
         <h2 class="title">О нашей школе</h2>
         <p>
           Школа креатива специализируется на обучении рисованию начинающих с нуля.
-
-          Вы можете написать красивую картину уже на первом занятии!
+          Вы можете написать красивую картину <b>уже на первом занятии!</b>
           Для достижения такого впечатляющего результата используется <b>уникальный метод.</b>
           <br><br>
-
-          В Москве метод преподается 7 лет, руководитель школы <b>Павел Сивков</b>
-
+          В Москве метод преподается 7 лет, руководитель школы <b>Павел Сивков.</b>
           В Перми тренинги ведет единственный сертифицированный
-          тренер школы <b>Маргарита Заборских</b>
-
+          тренер школы <b>Маргарита Заборских.</b>
           Каждым участником выполняется 7, 8 живописных работ разными техниками на занятиях "правополушарного рисования", а на наших мастер-классах есть возможность нарисовать большую работу на холсте.
         </p>
       </div>
-
       <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
         <iframe width="100%" height="370" src="https://www.youtube.com/embed/UKvwGRh7puw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
-
   </div>
 </section><!-- #about -->
 
-<!--<div class="header" [ngClass]="{ collapse: isHeaderCollapse }">
-  <div class="header-logo"></div>
-  <div class="header-menu">
-    <div class="header-menu-item">Занятия</div>
-    <div class="header-menu-item">О нас</div>
-    <div class="header-menu-item">Фото с занятий</div>
-    <div class="header-menu-item">Отзывы</div>
-    <div class="header-menu-item">5 лет</div>
-    <div class="header-menu-item">Контакты</div>
-  </div>
-  <div class="contacts-panel">
-    <div class="contact-phone-panel">
-      <div class="phone-icon-panel">
-        <div class="phone-icon round-icon border-icon-primary">
-          <div class="phone-icon-img"></div>
+<!--==========================
+  Events Section
+============================-->
+<section id="events">
+  <div class="container">
+    <div class="row events-container">
+      <div class="col content">
+        <h2 class="title">наши занятия</h2>
+        <h3 class="subtitle">Независимо от темы, указанной в расписании,
+          вы всегда можете выбрать свой сюжет и время для занятий.<br>
+          Продолжительность занятий 3.5 - 4.5 часа,
+          все материалы предоставляются, предлагаются чай, кофе
+        </h3>
+        <div class="divider-line">
+          <div></div>
+        </div>
+        <div class="event-filter-buttons">
+          <div class="event-filter-button active">для взрослых</div>
+          <div class="event-filter-button" style="margin: 10px 10px 0 10px">для детей</div>
+          <div class="event-filter-button">мастер классы</div>
         </div>
       </div>
-      <div class="phone-label-panel">
-        <div class="phone-one-label">+7 (499) 551-56-15</div>
-        <div class="phone-two-label">277-50-74</div>
-        <div class="phone-three-label">с 9:00 до 18:00, пн-пт.</div>
-      </div>
-    </div>
-    <div class="contact-addr-panel">
-      <div class="addr-icon-panel">
-        <div class="addr-icon round-icon border-icon-primary">
-          <div class="addr-icon-img"></div>
+      <div class="event-items-panel container-fluid">
+        <div class="row justify-content-center">
+          <div class="event-item-panel col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let lesson of lessons">
+            <div class="event-item">
+              <div class="event-photo-wrapper">
+                <img class="event-photo" src="{{lesson.img}}">
+                <div class="event-description">{{lesson.description}}</div>
+              </div>
+              <div class="event-date">{{getFormattedDate(lesson.date)}}</div>
+              <div class="event-name">{{lesson.name}}</div>
+              <div class="event-price">{{lesson.abonement ? 'АБОНЕМЕНТ' : lesson.price + 'р.'}}</div>
+              <div class="event-join-button-panel">
+                <div class="event-join-button">записаться</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="addr-label-panel">
-        <div class="addr-one-label">Пермь, Екатерининская, 122</div>
-        <div class="addr-two-label">офис 101, этаж 11</div>
-        <div class="addr-three-label">(Манхеттен. Апартаменты)</div>
+      <div class="event-more-btn-panel">
+        <div class="event-more-btn">показать еще</div>
       </div>
-    </div>
-    <div class="contact-social-panel">
-      <div class="vk-icon-button round-icon border-icon-primary">
-        <div class="vk-icon"></div>
-      </div>
-      <div class="inst-icon-button round-icon border-icon-primary">
-        <div class="inst-icon"></div>
-      </div>
-      <div class="fb-icon-button round-icon border-icon-primary">
-        <div class="fb-icon"></div>
-      </div>
-    </div>
-    <div class="login-panel">
-      <div class="login-button">Войти</div>
-    </div>
-    <div class="menu-button">
-      <div class="menu-icon"></div>
     </div>
   </div>
-</div>
-<div class="menu">
-  <div class="menu-item">Занятия</div>
-  <div class="menu-item">О нас</div>
-  <div class="menu-item">Фото с занятий</div>
-  <div class="menu-item">Отзывы</div>
-  <div class="menu-item">5 лет</div>
-  <div class="menu-item">Контакты</div>
-</div>
-<div class="band"></div>-->
-<div class="title-label">наши занятия</div>
-<div class="subtitle-label">
-  Независимо от темы, указанной в расписании,<br>
-  вы всегда можете выбрать свой сюжет и время для занятий.<br>
-  Продолжительность занятий 3,5-4,5 часа,<br>
-  все материалы предоставляются, предлагаются чай, кофе</div>
-<div class="divider-line">
-  <div></div>
-</div>
+</section><!-- #events -->
 
-<div class="lesson-filter-buttons">
-  <div class="lesson-filter-button active">для взрослых</div>
-  <div class="lesson-filter-button" style="margin: 10px 10px 0 10px">для детей</div>
-  <div class="lesson-filter-button">мастер классы</div>
-</div>
-
-<div class="lesson-items-panel container-fluid">
-  <div class="row justify-content-center">
-    <div class="lesson-item-panel col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let lesson of lessons">
-      <div class="lesson-item">
-        <div class="lesson-photo-wrapper">
-          <img class="lesson-photo" src="{{lesson.img}}">
-          <div class="lesson-description">{{lesson.description}}</div>
+<!--==========================
+  Advantages Section
+============================-->
+<section id="advantages">
+  <div class="container">
+    <div class="row advantages-container">
+      <div class="col content">
+        <h2 class="title">чем мы отличаемся от других</h2>
+        <div class="divider-line">
+          <div></div>
         </div>
-        <div class="lesson-date">{{getFormattedDate(lesson.date)}}</div>
-        <div class="lesson-name">{{lesson.name}}</div>
-        <div class="lesson-price">{{lesson.abonement ? 'АБОНЕМЕНТ' : lesson.price + 'р.'}}</div>
-        <div class="lesson-join-button-panel">
-          <div class="lesson-join-button">записаться</div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="advantage-column col-md-4">
+              <div class="advantage-image">
+                <img src="../../../assets/img/palette.png" style="width: 131px; height: 131px; margin: 10px 0 10px 45px;">
+              </div>
+              <div class="advantage-title">Уникальный метод обучения рисованию</div>
+              <div class="advantage-description">В основе метода – уникальные
+                техники рисования,
+                позволяющие активизировать
+                творческую часть мозга,
+                уже через 30 минут тренинга
+                Вы увидите <b>результат!</b></div>
+            </div>
+            <div class="advantage-column col-md-4">
+              <div class="advantage-image">
+                <img src="../../../assets/img/peoples.png">
+              </div>
+              <div class="advantage-title">Подходит для всех возрастов</div>
+              <div class="advantage-description">Занятия для тех, кто еще не осуществил мечту
+                научиться рисовать, для бизнесменов и дизайнеров,
+                учителей и врачей, для взрослых и детей!
+
+                Возраст участников от 7 до 75 лет.</div>
+            </div>
+            <div class="advantage-column col-md-4">
+              <div class="advantage-image">
+                <img src="../../../assets/img/materials.png" style="width: 121px; height: 121px; margin: 15px 0 15px 15px;">
+              </div>
+              <div class="advantage-title">Все материалы включены в стоимость</div>
+              <div class="advantage-description">На занятия в школу креатива ничего приносить
+                с собой не нужно. Обеспечиваем вас
+                кистями, красками, карандашами и т.д.
+                Также в стоимость курсов рисования
+                входит кофе-брейк.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section><!-- #advantages -->
 
-<div class="lessons-more-btn-panel">
-  <div class="lessons-more-btn">показать еще</div>
-</div>
-
-
-<!--<div class="title-label" style="background: #393778; color: #fff; padding-top: 30px">о нашей школе</div>
-<div class="subtitle-label" style="background: #393778; color: #fff; padding-bottom: 25px">Здесь Вы за 1 день научитесь рисовать, даже если никогда раньше не брали кисточку в руки</div>
-<div class="divider-line" style="background: #393778; display: none">
-  <div style="border-top: 1px solid #fff"></div>
-</div>
-<div class="container-fluid no-padding-lr about-school-panel">
-  <div class="row no-gutters">
-    <div class="col-xl-8 col-lg-7 col-md-6 order-2 order-md-1 about-school-text">
-      <div class="hello-label">Добро пожаловать!</div>
-      <div class="hello-divider-line divider-line" style="justify-content: flex-start">
-        <div style="border-top: 1px solid #000"></div>
+<!--==========================
+  Photos Section
+============================-->
+<section id="photos">
+  <div class="container">
+    <div class="row photos-container">
+      <div class="col content">
+        <h2 class="title">фото с занятий</h2>
+        <div class="divider-line">
+          <div></div>
+        </div>
+        <ks-modal-gallery [id]="9" [modalImages]="images" [currentImageConfig]="{ description: customDescription }"></ks-modal-gallery>
+        <div class="photos-more-btn-panel">
+          <div class="photos-more-btn" (click)="showMoreImgs()">показать еще</div>
+        </div>
       </div>
-      Школа креатива специализируется на обучении рисованию начинающих с нуля. <br><br>
-
-      Вы можете написать красивую картину уже на первом занятии! <br>
-      Для достижения такого впечатляющего результата используется <b>уникальный метод </b><br><br>
-
-      В Москве метод преподается 7 лет,  руководитель школы <b> Павел Сивков</b><br><br>
-
-      В Перми тренинги ведет единственный сертифицированный <br>
-      тренер школы <b>Маргарита Заборских</b><br><br>
-      Каждым участником выполняется 7, 8 живописных работ разными техниками
-      на занятиях "правополушарного рисования",  а на наших мастер-классах
-      есть возможность нарисовать большую работу на холсте.<br><br>
-      Продолжительность занятий 3,5 - 4 часа<br><br>
-      <b>Главная задача нашей школы – </b><br>
-      <b>раскрытие новых возможностей творческого потенциала человека</b>
-    </div>
-    <div class="about-school-photo-wrapper col-xl-4 col-lg-5 col-md-6 order-1 order-md-2 d-flex align-items-center justify-content-center">
-      &lt;!&ndash;<img class="about-school-photo-md" src="../../../assets/img/about-school-photo-md.png">
-      <img class="about-school-photo-xs" src="../../../assets/img/about-school-photo-xs.png">&ndash;&gt;
-      <iframe width="100%" height="370" src="https://www.youtube.com/embed/UKvwGRh7puw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </div>
-</div>-->
+</section><!-- #photos -->
 
-<div class="title-label">чем мы отличаемся от других</div>
-<div class="divider-line">
-  <div></div>
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="advantage-column col-md-4">
-      <div class="advantage-image">
-        <img src="../../../assets/img/palette.png" style="width: 131px; height: 131px; margin: 10px 0 10px 45px;">
+<!--==========================
+  Reviews Section
+============================-->
+<section id="reviews">
+  <div class="container">
+    <div class="row reviews-container">
+      <div class="col content">
+        <h2 class="title">отзывы</h2>
+        <div class="divider-line">
+          <div></div>
+        </div>
+        <div class="reviews-panel container-fluid">
+          <div class="row">
+            <div class="review-item review-odd col-md-7">Спасибо за позитивное настроение,которое Вы подарили нам вчера!
+              Мы с Максимом сегодня рисуем целый день! </div>
+          </div>
+          <div class="row justify-content-end mt15">
+            <div class="review-item col-md-7">Спасибо огромное за доставленное удовольствие!
+              До сегодняшнего дня была уверена, что вообще не умею рисовать!
+              Увидела мир другими глазами! Еще раз спасибо !!!!</div>
+          </div>
+        </div>
       </div>
-      <div class="advantage-title">Уникальный метод обучения рисованию</div>
-      <div class="advantage-description">В основе метода – уникальные
-        техники рисования,
-        позволяющие активизировать
-        творческую часть мозга,
-        уже через 30 минут тренинга
-        Вы увидите <b>результат!</b></div>
-    </div>
-    <div class="advantage-column col-md-4">
-      <div class="advantage-image">
-        <img src="../../../assets/img/peoples.png">
-      </div>
-      <div class="advantage-title">Подходит для всех возрастов</div>
-      <div class="advantage-description">Занятия для тех, кто еще не осуществил мечту
-        научиться рисовать, для бизнесменов и дизайнеров,
-        учителей и врачей, для взрослых и детей!
-
-        Возраст участников от 7 до 75 лет.</div>
-    </div>
-    <div class="advantage-column col-md-4">
-      <div class="advantage-image">
-        <img src="../../../assets/img/materials.png" style="width: 121px; height: 121px; margin: 15px 0 15px 15px;">
-      </div>
-      <div class="advantage-title">Все материалы включены в стоимость</div>
-      <div class="advantage-description">На занятия в школу креатива ничего приносить
-        с собой не нужно. Обеспечиваем вас
-        кистями, красками, карандашами и т.д.
-        Также в стоимость курсов рисования
-        входит кофе-брейк.</div>
     </div>
   </div>
-</div>
-<div class="title-label">фото с занятий</div>
-<div class="divider-line">
-  <div></div>
-</div>
+</section><!-- #reviews -->
+
+<!--==========================
+  Five Years Section
+============================-->
+<section id="five-years">
+  <div class="fluid-container">
+    <div class="row five-years-container no-gutters">
+      <div class="col content no-padding-lr">
+        <h2 class="title">5 лет нашей школе</h2>
+        <div class="divider-line">
+          <div></div>
+        </div>
+        <div class="five-years-panel">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-6" style="margin: 0 15px">
+              <iframe width="100%" height="370" src="https://www.youtube.com/embed/J23W5fQlQ_A?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <!--<img class="col-md-6 img-fluid" src="../../../assets/img/five-years2.jpg">-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- #five-years -->
+
+
+<!--==========================
+  Contacts Section
+============================-->
+<section id="contacts">
+  <div class="fluid-container">
+    <div class="row contacts-container no-gutters">
+      <div class="col content">
+        <div class="contacts-panel container-fluid">
+          <div class="row" style="width: 100%">
+            <div class="contacts-addr-panel col-lg-6 d-flex flex-column">
+              <div class="title">НАШЕ РАСПОЛОЖЕНИЕ</div>
+              <div class="divider-line">
+                <div></div>
+              </div>
+              <div class="contacts-addr-label">
+                Пермь, Екатерининская, 122, офис 101, этаж 11<br>
+                (Манхеттен. Апартаменты)</div>
+              <div class="contacts-map-container-wrapper d-flex">
+                <div id="contacts-map-container"></div>
+              </div>
+            </div>
+            <div class="send-msg-form-panel col-lg-6 d-flex flex-column">
+              <div class="title">ОСТАЛИСЬ ВОПРОСЫ ?</div>
+              <div class="divider-line">
+                <div></div>
+              </div>
+              <div style="text-align: center">ЗАПОЛНИТЕ ЭТУ ФОРМУ ИЛИ ЗВОНИТЕ <br><b>+7 (499) 551-56-15, 277-50-74</b><br>
+                МЫ С УДОВОЛЬСТВИЕМ ВАМ ПОМОЖЕМ!</div>
+              <form>
+                <div class="row mt15">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="E-mail">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Телефон">
+                  </div>
+                </div>
+                <div class="row mt15">
+                  <div class="col">
+                    <textarea class="msg-area form-control" placeholder="Ваш вопрос"></textarea>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="send-message-btn col">ОТПРАВИТЬ</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- #contacts -->
+
+<a href="#hero" pageScroll [pageScrollOffset]="0" [pageScrollDuration]="1500" [pageScrollEasing]="easing" class="back-to-top" [ngStyle]="{ display: (isHeaderCollapse) ? 'block' : 'none' }"><i class="fa fa-chevron-up"></i></a>
 
 <!--<ngx-masonry-gallery [width]='300' [images]='getPhotoItems()'></ngx-masonry-gallery>-->
 
@@ -278,92 +314,6 @@
   <img src="http://localhost:4200/assets/img/gallery/16.png" (click)="onClickPhoto(15)">
   <img src="http://localhost:4200/assets/img/gallery/17.png" (click)="onClickPhoto(16)">
 </div>-->
-
-<ks-modal-gallery [id]="9" [modalImages]="images" [currentImageConfig]="{ description: customDescription }"></ks-modal-gallery>
-
-<div class="lessons-more-btn-panel">
-  <div class="lessons-more-btn" (click)="showMoreImgs()">показать еще</div>
-</div>
-
-<div class="title-label">отзывы</div>
-<div class="divider-line">
-  <div></div>
-</div>
-<div class="reviews-panel container-fluid">
-  <div class="row">
-    <div class="review-item review-odd col-md-7">Спасибо за позитивное настроение,которое Вы подарили нам вчера!
-      Мы с Максимом сегодня рисуем целый день! </div>
-  </div>
-  <div class="row justify-content-end mt15">
-    <div class="review-item col-md-7">Спасибо огромное за доставленное удовольствие!
-      До сегодняшнего дня была уверена, что вообще не умею рисовать!
-      Увидела мир другими глазами! Еще раз спасибо !!!!</div>
-  </div>
-</div>
-
-<div class="lessons-more-btn-panel mt15">
-  <div class="lessons-more-btn">показать еще</div>
-</div>
-
-<div class="title-label">5 лет нашей школе</div>
-<div class="divider-line">
-  <div></div>
-</div>
-
-<div class="five-years-panel">
-  <div class="row align-items-center justify-content-center">
-    <div class="col-md-6">
-      <iframe width="100%" height="370" src="https://www.youtube.com/embed/J23W5fQlQ_A?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-    <!--<img class="col-md-6 img-fluid" src="../../../assets/img/five-years2.jpg">-->
-  </div>
-</div>
-
-<div class="contacts-panel container-fluid">
-  <div class="row" style="width: 100%">
-    <div class="contacts-addr-panel col-lg-6 d-flex flex-column">
-      <div class="title-label">НАШЕ РАСПОЛОЖЕНИЕ</div>
-      <div class="divider-line">
-        <div></div>
-      </div>
-      <div class="contacts-addr-label">
-        Пермь, Екатерининская, 122, офис 101, этаж 11<br>
-        (Манхеттен. Апартаменты)</div>
-      <div class="contacts-map-container-wrapper d-flex">
-        <div id="contacts-map-container"></div>
-      </div>
-    </div>
-    <div class="send-msg-form-panel col-lg-6 d-flex flex-column">
-      <div class="title-label">ОСТАЛИСЬ ВОПРОСЫ ?</div>
-      <div class="divider-line">
-        <div></div>
-      </div>
-      <div style="text-align: center">ЗАПОЛНИТЕ ЭТУ ФОРМУ ИЛИ ЗВОНИТЕ <br><b>+7 (499) 551-56-15, 277-50-74</b><br>
-        МЫ С УДОВОЛЬСТВИЕМ ВАМ ПОМОЖЕМ!</div>
-      <form>
-        <div class="row mt15">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="E-mail">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Телефон">
-          </div>
-        </div>
-        <div class="row mt15">
-          <div class="col">
-            <textarea class="msg-area form-control" placeholder="Ваш вопрос"></textarea>
-          </div>
-        </div>
-      </form>
-      <div class="row">
-        <div class="send-message-btn col">ОТПРАВИТЬ</div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<a href="#" class="back-to-top" [ngStyle]="{ display: (isHeaderCollapse) ? 'block' : 'none' }"><i class="fa fa-chevron-up"></i></a>
 
 <!--<div class="footer-panel">
   <div class="footer-rights-panel">

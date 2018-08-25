@@ -16,6 +16,22 @@ body {
   -webkit-text-size-adjust: none;
 }
 
+.container{
+  max-width: 2500px;
+}
+
+@media (min-width: 1500px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
 .mt15 {
   margin-top: 15px;
 }

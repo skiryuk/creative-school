@@ -1,6 +1,7 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
 import {Utils} from '../../utils/utils';
 import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
+import {EasingLogic} from 'ngx-page-scroll';
 
 @Component({
   selector: 'app-main-page',
@@ -10,6 +11,16 @@ import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/ang
 export class MainPageComponent implements OnInit, AfterViewInit {
 
   public isHeaderCollapse = false;
+
+  easing: EasingLogic = {
+    ease: (t: number, b: number, c: number, d: number): number => {
+      // easeInOutExpo easing
+      if (t === 0) { return b; }
+      if (t === d) { return b + c; }
+      if ((t /= d / 2) < 1) { return c / 2 * Math.pow(2, 10 * (t - 1)) + b; }
+      return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+    }
+  };
 
   images: Image[] = [
     new Image(0, {
