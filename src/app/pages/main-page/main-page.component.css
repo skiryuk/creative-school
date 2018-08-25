@@ -52,7 +52,7 @@
 }
 
 #header.header-fixed {
-  background: rgba(52, 59, 64, 0.9);
+  background: rgba(183, 0, 122, 0.9);
   padding: 20px 0;
   height: 72px;
   transition: all 0.5s;
@@ -107,7 +107,7 @@
 }
 
 #hero h1 {
-  margin: 30px 0 10px 0;
+  margin: 30px 15px 10px 15px;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -126,6 +126,9 @@
   color: #eee;
   margin-bottom: 50px;
   font-size: 24px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 15px;
 }
 
 @media (max-width: 768px) {
@@ -147,15 +150,16 @@
   /*border-radius: 50px;*/
   transition: 0.5s;
   margin: 10px;
-  border: 2px solid #fff;
+  border: 2px solid #b7007a;
   color: #fff;
   text-decoration: none;
+  background: #b7007a;
 }
 
 #hero .btn-get-started:hover {
-  background: #b7007a;
+  background: #fff;
   /*border: 2px solid #2dc997;*/
-  border: 2px solid #b7007a;
+  border: 2px solid #fff;
 }
 
 
