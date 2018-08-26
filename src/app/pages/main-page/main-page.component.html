@@ -2,7 +2,7 @@
 <!--==========================
   Header
   ============================-->
-<header id="header" [ngClass]="{ 'header-fixed': isHeaderCollapse }">
+<header id="header" [ngClass]="{ 'header-fixed': isHeaderCollapse || isOpenedMobileMenu, 'menu-opened': isOpenedMobileMenu }">
   <div class="fluid-container">
 
     <div id="logo" class="pull-left">
@@ -14,17 +14,32 @@
 
     <nav id="nav-menu-container">
       <ul class="nav-menu">
-        <li class="menu-active"><a href="#hero" pageScroll [pageScrollOffset]="0" [pageScrollDuration]="1500" [pageScrollEasing]="easing">О нас</a></li>
+        <li><a href="#about" pageScroll [pageScrollOffset]="70" [pageScrollDuration]="1500" [pageScrollEasing]="easing">О нас</a></li>
         <li><a href="#events" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Занятия</a></li>
         <li><a href="#photos" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Фото с занятий</a></li>
         <li><a href="#reviews" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Отзывы</a></li>
         <li><a href="#five-years" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">5 лет</a></li>
         <li><a href="#contacts" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Контакты</a></li>
       </ul>
-      <button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>
+      <button type="button" id="mobile-nav-toggle" (click)="onExpandMobileMenu($event)" (panstart)="onExpandMobileMenu($event)"><i id="mobile-nav-toggle-icon" class="fa fa-bars"></i></button>
     </nav><!-- #nav-menu-container -->
   </div>
 </header><!-- #header -->
+
+<div id="mobile-menu" [ngClass]="{ opened: isOpenedMobileMenu }">
+  <div class="mobile-menu-item"><a href="#about" pageScroll [pageScrollOffset]="70" [pageScrollDuration]="1500" [pageScrollEasing]="easing">О нас</a></div>
+  <div class="mobile-menu-item"><a href="#events" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Занятия</a></div>
+  <div class="mobile-menu-item"><a href="#photos" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Фото с занятий</a></div>
+  <div class="mobile-menu-item"><a href="#reviews" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Отзывы</a></div>
+  <div class="mobile-menu-item"><a href="#five-years" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">5 лет</a></div>
+  <div class="mobile-menu-item"><a href="#contacts" pageScroll [pageScrollOffset]="100" [pageScrollDuration]="1500" [pageScrollEasing]="easing">Контакты</a></div>
+  <div class="mobile-menu-item"><a href="#">Личный кабинет</a></div>
+  <div class="mobile-menu-social-buttons">
+    <div class="mobile-menu-social-button vk-icon"></div>
+    <div class="mobile-menu-social-button fb-icon"></div>
+    <div class="mobile-menu-social-button inst-icon"></div>
+  </div>
+</div>
 
 <!--==========================
     Hero Section

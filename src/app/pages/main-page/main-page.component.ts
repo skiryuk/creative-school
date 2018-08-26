@@ -11,6 +11,7 @@ import {EasingLogic} from 'ngx-page-scroll';
 export class MainPageComponent implements OnInit, AfterViewInit {
 
   public isHeaderCollapse = false;
+  public isOpenedMobileMenu = false;
 
   easing: EasingLogic = {
     ease: (t: number, b: number, c: number, d: number): number => {
@@ -222,6 +223,19 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.isHeaderCollapse = scrollTop > 100;
   }
 
+  @HostListener('document:click', ['$event'])
+  @HostListener('document:touchstart', ['$event'])
+  onOutsideClick(event) {
+    if (event.target.id !== 'mobile-nav-toggle' && event.target.id !== 'mobile-nav-toggle-icon') {
+      this.isOpenedMobileMenu = false;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isOpenedMobileMenu = false;
+  }
+
   ngOnInit() {
   }
 
@@ -270,6 +284,15 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       title: ' '
     });
     this.images = [...this.images, newIng];
+  }
+
+  onExpandMobileMenu(evt: MouseEvent) {
+    evt.stopPropagation();
+    this.isOpenedMobileMenu = !this.isOpenedMobileMenu;
+  }
+
+  onClickMobileMenuIcon(evt: MouseEvent) {
+    evt.stopPropagation();
   }
 }
 
