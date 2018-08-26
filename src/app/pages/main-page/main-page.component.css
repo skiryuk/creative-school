@@ -446,9 +446,11 @@
   z-index: 999;
   max-height: 0;
   opacity: 0;
+  visibility: hidden;
   transition: max-height 400ms ease, opacity 400ms ease;
 }
 #mobile-menu.opened {
+  visibility: visible;
   max-height: 500px;
   opacity: 1;
 }
@@ -798,7 +800,6 @@
 }
 
 #photos .photos-container .content {
-  padding: 0 30px;
   background: #fff;
 }
 
@@ -818,6 +819,7 @@
 }
 
 .photos-more-btn-panel {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -1099,69 +1101,6 @@
   padding: 0 15px;
 }
 
-/*.photo-gallery {
-  width:100%;
-  max-width:100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 100vw;
-  max-height: 800px;
-  font-size: 0;
-  overflow: hidden;
-}
-.photo-gallery img {
-  width: 25%;
-  transition: .8s opacity;
-  cursor: pointer;
-}
-
-.photo-gallery:hover img { opacity: 0.3; }
-.photo-gallery:hover img:hover { opacity: 1; }
-
-@supports not (flex-wrap: wrap) {
-  .photo-gallery { display: block; }
-  .photo-gallery img {
-    display: inline-block;
-    vertical-align: top;
-  }
-}*/
-
-ks-modal-gallery/deep/.plain-container {
-  width:100%;
-  max-width:100%;
-  display: flex;
-  flex-direction: column !important;
-  flex-wrap: wrap;
-  height: 120vw;
-  font-size: 0;
-  overflow: hidden;
-}
-ks-modal-gallery/deep/.plain-container img.image {
-  width: 25% !important;
-  transition: .8s opacity;
-  cursor: pointer;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-ks-modal-gallery/deep/.plain-container img.image:nth-child(4n) {
-  page-break-after: always; /* CSS 2.1 syntax */
-}
-
-ks-modal-gallery/deep/.plain-container:hover img.image { opacity: 0.3; }
-ks-modal-gallery/deep/.plain-container:hover img.image:hover { opacity: 1; }
-
-/* fallback for earlier versions of Firefox */
-
-@supports not (flex-wrap: wrap) {
-  ks-modal-gallery/deep/.plain-container { display: block; }
-  ks-modal-gallery/deep/.plain-container img.image {
-    display: inline-block;
-    vertical-align: top;
-  }
-}
-
 .review-item {
   background: #83c2d5;
   color: #000;
@@ -1255,4 +1194,17 @@ ks-modal-gallery/deep/.plain-container:hover img.image:hover { opacity: 1; }
   .send-msg-form-panel .col {
     padding-right: 0;
   }
+}
+
+ngx-masonry {
+  margin: 0 auto;
+}
+
+ngx-masonry/deep/.masonry-item img {
+  width: 250px;
+  cursor: pointer;
+}
+
+ks-modal-gallery/deep/ks-plain-gallery {
+  display: none;
 }

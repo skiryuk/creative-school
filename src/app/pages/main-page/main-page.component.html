@@ -201,7 +201,20 @@
         <div class="divider-line">
           <div></div>
         </div>
-        <ks-modal-gallery [id]="9" [modalImages]="images" [currentImageConfig]="{ description: customDescription }"></ks-modal-gallery>
+        <!--<ks-modal-gallery [id]="9" [modalImages]="images" [currentImageConfig]="{ description: customDescription }"></ks-modal-gallery>-->
+        <!--<masonry-layout
+          [max-height]="250"
+          [gutter]="4"
+          [images]="myImages"></masonry-layout>-->
+
+        <ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true">
+          <ngxMasonryItem *ngFor="let picture of images" class="masonry-item">
+            <img src="{{picture.modal.img}}" (click)="onClickPhoto(picture.id)">
+          </ngxMasonryItem>
+        </ngx-masonry>
+
+        <ks-modal-gallery [id]="1" [modalImages]="images" [currentImageConfig]="{ description: customDescription }"></ks-modal-gallery>
+
         <div class="photos-more-btn-panel">
           <div class="photos-more-btn" (click)="showMoreImgs()">показать еще</div>
         </div>

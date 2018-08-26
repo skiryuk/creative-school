@@ -2,6 +2,7 @@ import {AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit}
 import {Utils} from '../../utils/utils';
 import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 import {EasingLogic} from 'ngx-page-scroll';
+import {NgxMasonryOptions} from 'ngx-masonry';
 
 @Component({
   selector: 'app-main-page',
@@ -23,132 +24,63 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     }
   };
 
+  public masonryOptions: NgxMasonryOptions = {
+    transitionDuration: '0.2s',
+    gutter: 0,
+    resize: true,
+    initLayout: true,
+    fitWidth: true,
+    columnWidth: 250
+  };
+
   images: Image[] = [
     new Image(0, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/1.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/1.png'
     }),
     new Image(1, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/2.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/2.png'
     }),
     new Image(2, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/3.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/3.png'
     }),
     new Image(3, {
       img: 'https://creative-school.herokuapp.com/assets/img/gallery/4.png'
-    }, {
-      img: '',
-      title: ' '
     }),
     new Image(4, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/5.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/5.png'
     }),
     new Image(5, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/6.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/6.png'
     }),
     new Image(6, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/7.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/7.png'
     }),
     new Image(7, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/8.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/8.png'
     }),
     new Image(8, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/9.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/9.png'
     }),
     new Image(9, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/10.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/10.png'
     }),
     new Image(10, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/11.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/11.png'
     }),
     new Image(11, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/12.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/12.png'
     }),
     new Image(12, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/13.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/13.png'
     }),
     new Image(13, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/14.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/14.png'
     }),
     new Image(14, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/15.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/15.png'
     }),
     new Image(15, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/16.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
+      img: 'https://creative-school.herokuapp.com/assets/img/gallery/16.png'
     })
   ];
 
@@ -214,7 +146,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     strategy: DescriptionStrategy.HIDE_IF_EMPTY
   };
 
-  constructor() {
+  constructor(protected galleryService: GalleryService) {
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -227,7 +159,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   @HostListener('document:touchstart', ['$event'])
   onOutsideClick(event) {
     if (event.target.id !== 'mobile-nav-toggle' && event.target.id !== 'mobile-nav-toggle-icon') {
-      this.isOpenedMobileMenu = false;
+      setTimeout(() => {
+        this.isOpenedMobileMenu = false;
+      }, 200);
     }
   }
 
@@ -270,9 +204,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       }
   }
 
-  /*onClickPhoto(id: number) {
-    this.galleryService.openGallery(9, id);
-  }*/
+  onClickPhoto(id: number) {
+    this.galleryService.openGallery(1, id);
+  }
 
   showMoreImgs() {
     const newIng = new Image(16, {
@@ -289,10 +223,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   onExpandMobileMenu(evt: MouseEvent) {
     evt.stopPropagation();
     this.isOpenedMobileMenu = !this.isOpenedMobileMenu;
-  }
-
-  onClickMobileMenuIcon(evt: MouseEvent) {
-    evt.stopPropagation();
   }
 }
 
