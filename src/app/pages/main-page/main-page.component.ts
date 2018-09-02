@@ -3,6 +3,8 @@ import {Utils} from '../../utils/utils';
 import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 import {EasingLogic} from 'ngx-page-scroll';
 import {NgxMasonryOptions} from 'ngx-masonry';
+import {DataService} from '../../services/data.service';
+import {ReviewModel} from '../../models/review.model';
 
 @Component({
   selector: 'app-main-page',
@@ -13,6 +15,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   public isHeaderCollapse = false;
   public isOpenedMobileMenu = false;
+
+  public reviews: Array<ReviewModel> = [];
 
   easing: EasingLogic = {
     ease: (t: number, b: number, c: number, d: number): number => {
@@ -146,7 +150,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     strategy: DescriptionStrategy.HIDE_IF_EMPTY
   };
 
-  constructor(protected galleryService: GalleryService) {
+  constructor(protected galleryService: GalleryService,
+              protected dataService: DataService) {
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -171,6 +176,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.dataService.getReviews()
+      .subscribe(reviews => {
+        this.reviews = reviews;
+      });
   }
 
   ngAfterViewInit() {

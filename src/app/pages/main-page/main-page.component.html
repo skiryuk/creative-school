@@ -235,15 +235,18 @@
           <div></div>
         </div>
         <div class="reviews-panel container-fluid">
-          <div class="row">
-            <div class="review-item review-odd col-md-7">Спасибо за позитивное настроение,которое Вы подарили нам вчера!
-              Мы с Максимом сегодня рисуем целый день! </div>
-          </div>
-          <div class="row justify-content-end mt15">
-            <div class="review-item col-md-7">Спасибо огромное за доставленное удовольствие!
-              До сегодняшнего дня была уверена, что вообще не умею рисовать!
-              Увидела мир другими глазами! Еще раз спасибо !!!!</div>
-          </div>
+          <ng-container *ngFor="let review of reviews; let i = index">
+            <ng-template [ngIf]="i % 2 === 0" [ngIfElse]="evenReviewTmpl">
+              <div class="row mt15">
+                <div class="review-item review-odd col-md-7">{{ review.reviewText }}</div>
+              </div>
+            </ng-template>
+            <ng-template #evenReviewTmpl>
+              <div class="row justify-content-end mt15">
+                <div class="review-item col-md-7">{{ review.reviewText }}</div>
+              </div>
+            </ng-template>
+          </ng-container>
         </div>
       </div>
     </div>
