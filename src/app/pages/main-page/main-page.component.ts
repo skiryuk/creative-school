@@ -5,6 +5,10 @@ import {EasingLogic} from 'ngx-page-scroll';
 import {NgxMasonryOptions} from 'ngx-masonry';
 import {DataService} from '../../services/data.service';
 import {ReviewModel} from '../../models/review.model';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {LoginModalComponent} from '../../components/modals/login/login.modal';
+import {AuthService} from '../../services/auth.service';
+import {AddPhotoModalComponent} from '../../components/modals/add-photo/add-photo.modal';
 
 @Component({
   selector: 'app-main-page',
@@ -37,56 +41,58 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     columnWidth: 250
   };
 
-  images: Image[] = [
+  images: Array<Image> = [];
+
+  /*images: Image[] = [
     new Image(0, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/1.png'
+      img: 'http://localhost:4200/assets/img/gallery/1.png'
     }),
     new Image(1, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/2.png'
+      img: 'http://localhost:4200/assets/img/gallery/2.png'
     }),
     new Image(2, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/3.png'
+      img: 'http://localhost:4200/assets/img/gallery/3.png'
     }),
     new Image(3, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/4.png'
+      img: 'http://localhost:4200/assets/img/gallery/4.png'
     }),
     new Image(4, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/5.png'
+      img: 'http://localhost:4200/assets/img/gallery/5.png'
     }),
     new Image(5, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/6.png'
+      img: 'http://localhost:4200/assets/img/gallery/6.png'
     }),
     new Image(6, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/7.png'
+      img: 'http://localhost:4200/assets/img/gallery/7.png'
     }),
     new Image(7, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/8.png'
+      img: 'http://localhost:4200/assets/img/gallery/8.png'
     }),
     new Image(8, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/9.png'
+      img: 'http://localhost:4200/assets/img/gallery/9.png'
     }),
     new Image(9, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/10.png'
+      img: 'http://localhost:4200/assets/img/gallery/10.png'
     }),
     new Image(10, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/11.png'
+      img: 'http://localhost:4200/assets/img/gallery/11.png'
     }),
     new Image(11, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/12.png'
+      img: 'http://localhost:4200/assets/img/gallery/12.png'
     }),
     new Image(12, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/13.png'
+      img: 'http://localhost:4200/assets/img/gallery/13.png'
     }),
     new Image(13, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/14.png'
+      img: 'http://localhost:4200/assets/img/gallery/14.png'
     }),
     new Image(14, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/15.png'
+      img: 'http://localhost:4200/assets/img/gallery/15.png'
     }),
     new Image(15, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/16.png'
+      img: 'http://localhost:4200/assets/img/gallery/16.png'
     })
-  ];
+  ];*/
 
   lessons = [{
     id: 1,
@@ -151,7 +157,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   };
 
   constructor(protected galleryService: GalleryService,
-              protected dataService: DataService) {
+              protected authService: AuthService,
+              protected dataService: DataService,
+              protected modalService: NgbModal) {
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -179,6 +187,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.dataService.getReviews()
       .subscribe(reviews => {
         this.reviews = reviews;
+      });
+
+    this.dataService.getImages()
+      .subscribe(images => {
+        this.images = images.map(image =>
+          new Image(+image.id, { img: `/api/images/view/${image.id}`}));
       });
   }
 
@@ -217,21 +231,41 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.galleryService.openGallery(1, id);
   }
 
-  showMoreImgs() {
-    const newIng = new Image(16, {
-      img: 'https://creative-school.herokuapp.com/assets/img/gallery/17.png',
-      title: ' ',
-      alt: ' '
-    }, {
-      img: '',
-      title: ' '
-    });
-    this.images = [...this.images, newIng];
-  }
-
   onExpandMobileMenu(evt: MouseEvent) {
     evt.stopPropagation();
     this.isOpenedMobileMenu = !this.isOpenedMobileMenu;
   }
-}
 
+  openLoginModal() {
+    this.modalService.open(LoginModalComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  openAddPhotoModal() {
+    const modalRef = this.modalService.open(AddPhotoModalComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.result.then((id: string) => {
+      const newImage = new Image(+id, { img: `/api/images/view/${id}`});
+      this.images = [newImage, ...this.images];
+    });
+  }
+
+  isAuth() {
+    return this.authService.isAuth();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  hasMoreImgs() {
+    return this.dataService.currentImagesPage < this.dataService.totalImagesPages;
+  }
+
+  showMoreImgs() {
+    this.dataService.getImages()
+      .subscribe(images => {
+        const newImages = images.map(image =>
+          new Image(+image.id, { img: `/api/images/view/${image.id}`}));
+        this.images = [...this.images, ...newImages];
+      });
+  }
+}

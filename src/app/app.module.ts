@@ -12,7 +12,11 @@ import {ModalGalleryModule} from '@ks89/angular-modal-gallery';
 import {NgxPageScrollModule} from 'ngx-page-scroll';
 import {NgxMasonryModule} from 'ngx-masonry';
 import {DataService} from './services/data.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
+import {LoginModalComponent} from './components/modals/login/login.modal';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './services/auth.service';
+import {AddPhotoModalComponent} from './components/modals/add-photo/add-photo.modal';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -21,11 +25,15 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    LoginModalComponent,
+    AddPhotoModalComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     NgbModule.forRoot(),
@@ -33,7 +41,9 @@ const appRoutes: Routes = [
     NgxPageScrollModule,
     NgxMasonryModule
   ],
-  providers: [Title, DataService],
-  bootstrap: [AppComponent]
+  providers: [Title, DataService, AuthService],
+  bootstrap: [AppComponent],
+  entryComponents: [LoginModalComponent,
+                    AddPhotoModalComponent]
 })
 export class AppModule { }

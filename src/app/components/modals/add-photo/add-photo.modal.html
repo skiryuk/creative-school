@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h5 class="modal-title">Загрузить фото</h5>
+  <button type="button" class="close" aria-label="Закрыть"
+          (click)="activeModal.dismiss()">x
+  </button>
+</div>
+<div class="modal-body">
+  <div class="modal-overlay-spinner" *ngIf="isLoading">
+    <span class="fa fa-spinner fa-spin fa-3x"></span>
+  </div>
+
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" [disabled]="!selectedFiles || isLoading" (click)="upload()">Загрузить</button>
+</div>

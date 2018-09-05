@@ -1,10 +1,13 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const passport = require('passport');
 
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const api = require('./router');
+const authApi = require('./routers/auth.router');
+const imagesApi = require('./routers/image.router');
+
 
 ///////////////////////
 // Server Middleware
@@ -26,6 +29,16 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Passport
+app.use(passport.initialize());
+
+//////////////////
+// API Queries
+//////////////////
+
+app.use('/api/images', imagesApi);
+app.use('/api/auth', authApi);
+
 //////////////////
 // Static Query
 //////////////////
@@ -33,12 +46,6 @@ app.use(function(req, res, next) {
 app.get('/*', function(req,res) {
   res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
-
-//////////////////
-// API Queries
-//////////////////
-
-app.use('/', api);
 
 app.listen(process.env.PORT || 8080, function () {
   console.log('\n' + '**********************************');

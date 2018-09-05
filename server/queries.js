@@ -5,7 +5,7 @@ const options = {
 };
 
 const env = process.env.NODE_ENV || "development";
-const config = require('./config')[env];
+const config = require('./config/config')[env];
 
 const pgp = require('pg-promise')(options);
 const connectionString = `postgres://${config.database.user}:${config.database.pass}@${config.database.host}:${config.database.port}/${config.database.db}`;
