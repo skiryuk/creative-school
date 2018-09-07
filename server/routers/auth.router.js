@@ -6,10 +6,9 @@ const env = process.env.NODE_ENV || "development";
 const config = require('../config/config')[env];
 
 const db = require('../db.js');
-const Users = db.users;
 
 router.post('/login', (req, res) => {
-  Users.find({
+  db.users.find({
     where: {
       user: req.body.login
     }

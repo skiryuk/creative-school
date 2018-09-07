@@ -6,31 +6,25 @@ const stream = require('stream');
 const passport = require('passport');
 require('../config/passport')(passport);
 const db = require('../db.js');
-const utils = require('../utils/utils');
 
 router.post('/upload', [upload.single("file"), passport.authenticate('jwt', { session: false})], (req, res) => {
-  const token = utils.getToken(req.headers);
-  if (token) {
-    db.images.create({
-      type: req.file.mimetype,
+  db.images.create({
+    type: req.file.mimetype,
+    name: req.file.originalname,
+    data: req.file.buffer
+  }).then(obj => {
+    res.json({
+      id: obj.id,
+      isLoaded: true,
       name: req.file.originalname,
-      data: req.file.buffer
-    }).then((obj) => {
-      res.json({
-        id: obj.id,
-        isLoaded: true,
-        name: req.file.originalname,
-        message: 'Фото успешно загружено'
-      });
-    }).catch(err => {
-      res.status(500).json({
-        status: 'error',
-        message: err
-      })
+      message: 'Фото успешно загружено'
     });
-  } else {
-    return res.status(403).send({status: 'error', message: 'Не авторизован'});
-  }
+  }).catch(err => {
+    res.status(500).json({
+      status: 'error',
+      message: err
+    })
+  });
 });
 
 router.get('/get/:page', (req, res) => {

@@ -35,7 +35,7 @@ export class AddPhotoModalComponent implements OnInit {
       }
     }, err => {
       this.isLoading = false;
-      console.log('Произошла ошибка при загрузке фото');
+      console.log('Произошла ошибка при создании фото');
     });
   }
 }

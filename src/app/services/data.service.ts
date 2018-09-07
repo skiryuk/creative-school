@@ -42,4 +42,30 @@ export class DataService {
 
     return this.http.request(req);
   }
+
+  createEvent(image: File): Observable<HttpEvent<{}>> {
+
+    const fileInfo = {
+      title: 'test',
+      date: new Date(),
+      description: 'test event create',
+      abonement: true,
+      price: 2000.34,
+      type: 1,
+      mimeType: 'image/png'
+    };
+
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', image);
+    formdata.append('info', JSON.stringify(fileInfo));
+
+    const req = new HttpRequest('POST', '/api/events/add', formdata, {
+      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('token') }),
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  }
 }

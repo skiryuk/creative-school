@@ -17,6 +17,7 @@ import {LoginModalComponent} from './components/modals/login/login.modal';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './services/auth.service';
 import {AddPhotoModalComponent} from './components/modals/add-photo/add-photo.modal';
+import {AddEventModalComponent} from './components/modals/add-event/add-event.modal';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     MainPageComponent,
     LoginModalComponent,
-    AddPhotoModalComponent
+    AddPhotoModalComponent,
+    AddEventModalComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
   providers: [Title, DataService, AuthService],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent,
-                    AddPhotoModalComponent]
+                    AddPhotoModalComponent,
+                    AddEventModalComponent]
 })
 export class AppModule { }

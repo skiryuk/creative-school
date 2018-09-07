@@ -98,7 +98,7 @@
   <div class="container">
     <div class="row events-container">
       <div class="col content">
-        <h2 class="title"><span>наши занятия</span><span class="add-event add-button" *ngIf="isAuth()">Добавить</span></h2>
+        <h2 class="title"><span>наши занятия</span><span class="add-event add-button" *ngIf="isAuth()" (click)="openAddEventModal()">Добавить</span></h2>
         <h3 class="subtitle">Независимо от темы, указанной в расписании,
           вы всегда можете выбрать свой сюжет и время для занятий.<br>
           Продолжительность занятий 3.5 - 4.5 часа,

@@ -9,6 +9,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LoginModalComponent} from '../../components/modals/login/login.modal';
 import {AuthService} from '../../services/auth.service';
 import {AddPhotoModalComponent} from '../../components/modals/add-photo/add-photo.modal';
+import {AddEventModalComponent} from '../../components/modals/add-event/add-event.modal';
 
 @Component({
   selector: 'app-main-page',
@@ -246,6 +247,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       const newImage = new Image(+id, { img: `/api/images/view/${id}`});
       this.images = [newImage, ...this.images];
     });
+  }
+
+  openAddEventModal() {
+    this.modalService.open(AddEventModalComponent, { size: 'lg', backdrop: 'static' });
   }
 
   isAuth() {
