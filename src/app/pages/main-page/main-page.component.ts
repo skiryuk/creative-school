@@ -10,6 +10,7 @@ import {LoginModalComponent} from '../../components/modals/login/login.modal';
 import {AuthService} from '../../services/auth.service';
 import {AddPhotoModalComponent} from '../../components/modals/add-photo/add-photo.modal';
 import {AddEventModalComponent} from '../../components/modals/add-event/add-event.modal';
+import {EventInfoModel} from '../../models/event.model';
 
 @Component({
   selector: 'app-main-page',
@@ -18,10 +19,12 @@ import {AddEventModalComponent} from '../../components/modals/add-event/add-even
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
 
-  public isHeaderCollapse = false;
-  public isOpenedMobileMenu = false;
+  isHeaderCollapse = false;
+  isOpenedMobileMenu = false;
+  eventCategory = 1;
 
-  public reviews: Array<ReviewModel> = [];
+  reviews: Array<ReviewModel> = [];
+  events: Array<EventInfoModel> = [];
 
   easing: EasingLogic = {
     ease: (t: number, b: number, c: number, d: number): number => {
@@ -193,7 +196,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.dataService.getImages()
       .subscribe(images => {
         this.images = images.map(image =>
-          new Image(+image.id, { img: `/api/images/view/${image.id}`}));
+          new Image(image.id, { img: `/api/images/view/${image.id}`}));
+      });
+
+    this.dataService.getEvents(this.eventCategory)
+      .subscribe(events => {
+        this.events = events;
       });
   }
 
@@ -243,14 +251,22 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   openAddPhotoModal() {
     const modalRef = this.modalService.open(AddPhotoModalComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.result.then((id: string) => {
-      const newImage = new Image(+id, { img: `/api/images/view/${id}`});
+    modalRef.result.then((id: number) => {
+      const newImage = new Image(id, { img: `/api/images/view/${id}`});
       this.images = [newImage, ...this.images];
+    }, (reason) => {
     });
   }
 
   openAddEventModal() {
-    this.modalService.open(AddEventModalComponent, { size: 'lg', backdrop: 'static' });
+    const modalRef = this.modalService.open(AddEventModalComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.model.type = this.eventCategory;
+    modalRef.result.then((event: EventInfoModel) => {
+      if (event && this.eventCategory === event.type) {
+        this.events = [event, ...this.events];
+      }
+    }, (reason) => {
+    });
   }
 
   isAuth() {
@@ -265,12 +281,39 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     return this.dataService.currentImagesPage < this.dataService.totalImagesPages;
   }
 
+  hasMoreEvents() {
+    return this.dataService.currentEventsPage < this.dataService.totalEventsPage;
+  }
+
   showMoreImgs() {
     this.dataService.getImages()
       .subscribe(images => {
         const newImages = images.map(image =>
-          new Image(+image.id, { img: `/api/images/view/${image.id}`}));
+          new Image(image.id, { img: `/api/images/view/${image.id}`}));
         this.images = [...this.images, ...newImages];
       });
+  }
+
+  showMoreEvents() {
+    this.dataService.getEvents(this.eventCategory)
+      .subscribe(events => {
+        this.events = [...this.events, ...events];
+      });
+  }
+
+  onChangeEventCategory(eventCategory: number) {
+    if (eventCategory !== this.eventCategory) {
+      this.eventCategory = eventCategory;
+
+      this.dataService.resetEventsPageState();
+      this.dataService.getEvents(this.eventCategory)
+        .subscribe(events => {
+          this.events = events;
+        });
+    }
+  }
+
+  getEventPhotoUrl(id: number) {
+    return `/api/events/view/${id}`;
   }
 }

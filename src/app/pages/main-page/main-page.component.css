@@ -679,12 +679,13 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-  border: 1px solid #c6c6cc;
-  background: #eaeaea;
+  background: #f1f1f1;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
 .event-photo {
-  width: 100%;
+  max-width: 100%;
+  height: 270px;
 }
 
 .event-description {
@@ -694,6 +695,8 @@
 
 .event-photo-wrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .event-photo-wrapper:hover .event-description {
@@ -715,7 +718,8 @@
 }
 
 .event-date {
-  color: #777;
+  /*color: #777;*/
+  color: rgb(116, 115, 115);
   font-weight: 600;
   text-align: center;
   margin-top: 10px;
@@ -723,7 +727,8 @@
 
 .event-name {
   margin: 10px 20px 0 20px;
-  color: #7b7b7b;
+  /*color: #7b7b7b;*/
+  color: rgb(33, 37, 41);
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -735,7 +740,7 @@
   color: #b7007a;
   text-align: center;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .event-join-button-panel {
@@ -745,15 +750,18 @@
 }
 
 .event-join-button {
-  height: 50px;
+  height: 44px;
   text-transform: uppercase;
   border: 3px solid #b7007a;
-  padding: 10px 25px;
+  padding: 8px 25px;
   text-align: center;
   border-radius: 7px;
   color: #b7007a;
   cursor: pointer;
   font-weight: bold;
+  /*background: #b7007a;*/
+  background: #f1f1f1;
+  font-size: 15px;
 }
 
 .event-join-button:hover {
@@ -775,6 +783,7 @@
   text-transform: uppercase;
   font-size: 15px;
   cursor: pointer;
+  user-select: none;
 }
 
 .event-more-btn:hover {
@@ -851,6 +860,7 @@
   text-transform: uppercase;
   font-size: 15px;
   cursor: pointer;
+  user-select: none;
 }
 
 .photos-more-btn:hover {
@@ -900,6 +910,7 @@
   text-transform: uppercase;
   font-size: 15px;
   cursor: pointer;
+  user-select: none;
 }
 
 .reviews-more-btn:hover {
@@ -1238,6 +1249,9 @@ ks-modal-gallery/deep/ks-plain-gallery {
   text-transform: capitalize;
   margin-left: 15px;
   cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
 }
 
 .add-button:hover {

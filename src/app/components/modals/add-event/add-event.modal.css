@@ -1,46 +1,20 @@
 
-.btn.btn-success {
-  background-color: #b7007a;
+p-calendar/deep/input {
+  height: 38px;
+  padding: 6px;
+  border: 1px solid #ced4da;
+}
+
+p-calendar/deep/input.ui-inputtext:enabled:hover:not(.ui-state-error) {
+  border: 1px solid #ced4da
+}
+
+p-calendar/deep/input.ui-inputtext:enabled:focus:not(.ui-state-error),
+p-calendar/deep/input.ui-inputtext:enabled:focus:not(.ui-state-error):hover {
   border-color: #b7007a;
 }
 
-.btn.btn-success:hover {
-  background-color: rgb(217,0,145);
-  border-color: rgb(217,0,145);
-}
-
-.close {
-  color: #b7007a;
-  opacity: 1;
-}
-
-.close:not(:disabled):not(.disabled):hover,
-.close:not(:disabled):not(.disabled):focus {
-  color: rgb(217,0,145);
-  outline: none;
-}
-
-.btn.btn-default {
-  box-shadow: none;
-  outline: none;
-}
-
-input[type="file"]:focus {
-  outline: none;
-}
-
-.modal-overlay-spinner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.7);
-}
-
-.modal-overlay-spinner .fa-spinner {
-  color: #b7007a;
+p-calendar/deep/.ui-datepicker table td > a.ui-state-active {
+  background-color: #b7007a;
+  color: #fff;
 }

@@ -18,6 +18,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './services/auth.service';
 import {AddPhotoModalComponent} from './components/modals/add-photo/add-photo.modal';
 import {AddEventModalComponent} from './components/modals/add-event/add-event.modal';
+import {CalendarModule} from 'primeng/primeng';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     ModalGalleryModule.forRoot(),
     NgxPageScrollModule,
-    NgxMasonryModule
+    NgxMasonryModule,
+    CalendarModule
   ],
   providers: [Title, DataService, AuthService],
   bootstrap: [AppComponent],

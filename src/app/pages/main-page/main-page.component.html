@@ -108,31 +108,32 @@
           <div></div>
         </div>
         <div class="event-filter-buttons">
-          <div class="event-filter-button active">для взрослых</div>
-          <div class="event-filter-button" style="margin: 10px 10px 0 10px">для детей</div>
-          <div class="event-filter-button">мастер классы</div>
+          <div class="event-filter-button active" [ngClass]="{ active: (eventCategory === 1) }" (click)="onChangeEventCategory(1)">для взрослых</div>
+          <div class="event-filter-button" style="margin: 10px 10px 0 10px" [ngClass]="{ active: (eventCategory === 2) }" (click)="onChangeEventCategory(2)">для детей</div>
+          <div class="event-filter-button" [ngClass]="{ active: (eventCategory === 3) }" (click)="onChangeEventCategory(3)">мастер классы</div>
         </div>
       </div>
       <div class="event-items-panel container-fluid">
         <div class="row justify-content-center">
-          <div class="event-item-panel col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let lesson of lessons">
+          <div class="event-item-panel col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let event of events">
             <div class="event-item">
               <div class="event-photo-wrapper">
-                <img class="event-photo" src="{{lesson.img}}">
-                <div class="event-description">{{lesson.description}}</div>
+                <img class="event-photo" src="{{getEventPhotoUrl(event.id)}}">
+                <div class="event-description">{{event.description}}</div>
               </div>
-              <div class="event-date">{{getFormattedDate(lesson.date)}}</div>
-              <div class="event-name">{{lesson.name}}</div>
-              <div class="event-price">{{lesson.abonement ? 'АБОНЕМЕНТ' : lesson.price + 'р.'}}</div>
+              <div class="event-date">{{getFormattedDate(event.date)}}</div>
+              <div class="event-name">{{event.title}}</div>
+              <div class="event-price">{{event.abonement ? 'АБОНЕМЕНТ' : event.price + 'р.'}}</div>
               <div class="event-join-button-panel">
                 <div class="event-join-button">записаться</div>
               </div>
             </div>
           </div>
+          <div *ngIf="!events || events.length === 0" style="font-size: 18px; font-weight: bold; margin-top: 20px;">Занятий нет</div>
         </div>
       </div>
-      <div class="event-more-btn-panel">
-        <div class="event-more-btn">показать еще</div>
+      <div class="event-more-btn-panel" *ngIf="hasMoreEvents()">
+        <div class="event-more-btn" (click)="showMoreEvents()">показать еще</div>
       </div>
     </div>
   </div>

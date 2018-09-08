@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const Events = sequelize.define('events', {
     id: {
-      type: Sequelize.BIGINT,
+      type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     title: {
       type: Sequelize.STRING
     },
-    event_date: {
+    date: {
       type: Sequelize.DATE
     },
     description: {

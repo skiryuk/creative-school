@@ -3,6 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {HttpResponse} from '@angular/common/http';
 import {DataService} from '../../../services/data.service';
+import {EventInfoModel} from '../../../models/event.model';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-event-modal',
@@ -12,30 +14,62 @@ import {DataService} from '../../../services/data.service';
 export class AddEventModalComponent implements OnInit {
 
   selectedFiles: FileList;
-  currentFileUpload: File;
   isLoading = false;
   croppedImage: any;
+  model: EventInfoModel = new EventInfoModel();
+  eventForm: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private dataService: DataService) { }
+  ru: any;
 
-  ngOnInit() {
+  constructor(public activeModal: NgbActiveModal,
+              private formBuilder: FormBuilder,
+              private dataService: DataService) {
+    this.createForm();
   }
 
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
-    this.cropImage(this.selectedFiles[0], (image) => {
-      this.croppedImage = image;
+  ngOnInit() {
+    this.ru = {
+      firstDayOfWeek: 0,
+      monthNames: ['Январь', 'Февраль' , 'Март' , 'Апрель' , 'Май' , 'Июнь' , 'Июль' , 'Август' , 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+      monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек' ],
+      dayNames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+      dayNamesShort: ['Воск', 'Пон', 'Вт', 'Ср', 'Четв', 'Пят', 'Суб'],
+      dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+      today: 'Сегодня',
+      clear: 'Очистить'
+    };
+  }
+
+  private createForm() {
+    this.eventForm = this.formBuilder.group({
+      dateField: null,
+      titleField: '',
+      descriptionField: '',
+      priceField: null,
+      fileField: null,
+      abonementField: false
     });
   }
 
-  upload() {
+  selectFile(event) {
+    /*this.isLoading = true;*/
+    this.selectedFiles = event.target.files;
+    /*this.cropImage(this.selectedFiles[0], (image) => {
+      this.croppedImage = image;
+      this.isLoading = false;
+    });*/
+  }
+
+  add() {
     this.isLoading = true;
-    this.dataService.createEvent(this.croppedImage).subscribe(event => {
-      if (event instanceof HttpResponse) {
-        const res = JSON.parse(event.body as any);
-        this.isLoading = false;
-        this.activeModal.close(res.id);
-      }
+    this.dataService.addEvent(this.model, (this.selectedFiles && this.selectedFiles.length > 0) ? this.selectedFiles[0] : null)
+      .subscribe(event => {
+        if (event instanceof HttpResponse) {
+          const res = JSON.parse(event.body as any);
+          this.isLoading = false;
+          this.model.id = res.id;
+          this.activeModal.close(this.model);
+        }
     }, err => {
       this.isLoading = false;
       console.log('Произошла ошибка при создании мероприятия');
@@ -75,5 +109,9 @@ export class AddEventModalComponent implements OnInit {
         callback(blob);
       }, file.type);
     };
+  }
+
+  onChangeType(type: string) {
+    this.model.type = +type;
   }
 }
