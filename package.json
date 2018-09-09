@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "NODE_ENV=production node server.js",
+    "start": "cd server && set NODE_ENV=production&&node server.js",
     "postinstall": "ng build --aot --prod",
     "start:dev": "cd server && set NODE_ENV=development&&nodemon --inspect-brk=3001 server.js"
   },
