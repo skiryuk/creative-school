@@ -17,7 +17,7 @@ const mailApi = require('./routers/mail.router');
 ///////////////////////
 
 app.use(logger(process.env.NODE_ENV === "production" ? "combined" : "dev"));
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/../dist'));
 
 // parse application/json
 app.use(bodyParser.json());
