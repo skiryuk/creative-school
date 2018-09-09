@@ -9,6 +9,7 @@ const authApi = require('./routers/auth.router');
 const imagesApi = require('./routers/image.router');
 const eventsApi = require('./routers/event.router');
 const reviewsApi = require('./routers/review.router');
+const mailApi = require('./routers/mail.router');
 
 
 ///////////////////////
@@ -42,6 +43,7 @@ app.use('/api/images', imagesApi);
 app.use('/api/auth', authApi);
 app.use('/api/events', eventsApi);
 app.use('/api/reviews', reviewsApi);
+app.use('/api/mail', mailApi);
 
 //////////////////
 // Static Query

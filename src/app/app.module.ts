@@ -21,6 +21,7 @@ import {AddEventModalComponent} from './components/modals/add-event/add-event.mo
 import {CalendarModule} from 'primeng/primeng';
 import {AddReviewModalComponent} from './components/modals/add-review/add-review.modal';
 import {NotifierModule} from 'angular-notifier';
+import {NgxMaskModule} from 'ngx-mask';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     NgxPageScrollModule,
     NgxMasonryModule,
     CalendarModule,
+    NgxMaskModule.forRoot(),
     NotifierModule.withConfig({
       position: {
         horizontal: {

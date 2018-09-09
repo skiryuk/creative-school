@@ -338,22 +338,25 @@
               <form>
                 <div class="row mt15">
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="E-mail">
+                    <input type="email" class="form-control" name="feedbackEmailField" placeholder="E-mail" [(ngModel)]="modelFeedback.email">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Телефон">
+                    <input type="text" class="form-control" name="feedbackPhoneField" placeholder="Телефон" mask="+7 (999) 999-99-99" [(ngModel)]="modelFeedback.phone">
                   </div>
                 </div>
                 <div class="row mt15">
                   <div class="col">
-                    <textarea class="msg-area form-control" placeholder="Ваш вопрос"></textarea>
+                    <textarea class="msg-area form-control" name="feedbackQuestionField" placeholder="Ваш вопрос" [(ngModel)]="modelFeedback.question"></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="send-message-btn col" (click)="onSendFeedback()" [ngClass]="{ sending: isSending, disabled: isDisabledSendFeedbackBtn() }">
+                    <span *ngIf="!isSending">ОТПРАВИТЬ</span>
+                    <span *ngIf="isSending">ИДЕТ ОТПРАВКА...</span>
+                    <i class="fa fa-spinner fa-spin" style="margin-left: 20px;" *ngIf="isSending"></i>
                   </div>
                 </div>
               </form>
-              <div class="row">
-                <div class="send-message-btn col">ОТПРАВИТЬ</div>
-              </div>
-
             </div>
           </div>
         </div>

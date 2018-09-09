@@ -5,6 +5,7 @@ import {ReviewModel} from '../models/review.model';
 import {map} from 'rxjs/operators';
 import {ImageModel} from '../models/image.model';
 import {EventInfoModel} from '../models/event.model';
+import {FeedbackModel} from '../models/feedback.model';
 
 @Injectable()
 export class DataService {
@@ -104,6 +105,13 @@ export class DataService {
     return this.http.post(`/api/reviews/add`, { text: text }, {
         headers: new HttpHeaders({ 'Authorization': localStorage.getItem('token') })
       })
+      .pipe(map((res: any) => {
+        return res;
+      }));
+  }
+
+  sendFeedback(feedback: FeedbackModel) {
+    return this.http.post(`/api/mail/send/feedback`, feedback)
       .pipe(map((res: any) => {
         return res;
       }));
