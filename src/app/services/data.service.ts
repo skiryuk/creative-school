@@ -15,14 +15,17 @@ export class DataService {
   currentEventsPage = 0;
   totalEventsPage = 0;
 
+  currentReviewsPage = 0;
+  totalReviewsPage = 0;
+
   constructor(private http: HttpClient) { }
 
   getReviews(): Observable<ReviewModel[]> {
-    /*return this.http.post('http://localhost:8080/api/reviews', {})
-      .pipe(map((res: any) => {
+    return this.http.get(`/api/reviews/get/${++this.currentReviewsPage}`)
+      .pipe(map((res: { data: ReviewModel[], count: number, pages: number}) => {
+        this.totalReviewsPage = res.pages;
         return res.data as ReviewModel[];
-      }));*/
-    return of([]);
+      }));
   }
 
   getImages(): Observable<ImageModel[]> {
@@ -73,6 +76,15 @@ export class DataService {
           }
         });
         return res.data as EventInfoModel[];
+      }));
+  }
+
+  addReview(text: string): Observable<any> {
+    return this.http.post(`/api/reviews/add`, { text: text }, {
+        headers: new HttpHeaders({ 'Authorization': localStorage.getItem('token') })
+      })
+      .pipe(map((res: any) => {
+        return res;
       }));
   }
 

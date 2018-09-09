@@ -19,6 +19,8 @@ import {AuthService} from './services/auth.service';
 import {AddPhotoModalComponent} from './components/modals/add-photo/add-photo.modal';
 import {AddEventModalComponent} from './components/modals/add-event/add-event.modal';
 import {CalendarModule} from 'primeng/primeng';
+import {AddReviewModalComponent} from './components/modals/add-review/add-review.modal';
+import {NotifierModule} from 'angular-notifier';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     MainPageComponent,
     LoginModalComponent,
     AddPhotoModalComponent,
-    AddEventModalComponent
+    AddEventModalComponent,
+    AddReviewModalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,12 +46,53 @@ const appRoutes: Routes = [
     ModalGalleryModule.forRoot(),
     NgxPageScrollModule,
     NgxMasonryModule,
-    CalendarModule
+    CalendarModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right',
+          distance: 12
+        },
+        vertical: {
+          position: 'top',
+          distance: 12,
+          gap: 10
+        }
+      },
+      theme: 'material',
+      behaviour: {
+        autoHide: 5000,
+        onClick: 'hide',
+        onMouseover: 'pauseAutoHide',
+        showDismissButton: true,
+        stacking: 4
+      },
+      animations: {
+        enabled: true,
+        show: {
+          preset: 'slide',
+          speed: 300,
+          easing: 'ease'
+        },
+        hide: {
+          preset: 'fade',
+          speed: 300,
+          easing: 'ease',
+          offset: 50
+        },
+        shift: {
+          speed: 300,
+          easing: 'ease'
+        },
+        overlap: 150
+      }
+    })
   ],
   providers: [Title, DataService, AuthService],
   bootstrap: [AppComponent],
   entryComponents: [LoginModalComponent,
                     AddPhotoModalComponent,
-                    AddEventModalComponent]
+                    AddEventModalComponent,
+                    AddReviewModalComponent]
 })
 export class AppModule { }

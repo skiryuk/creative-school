@@ -27,6 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^2.2.2",
     "@types/hammerjs": "^2.0.35",
     "@types/mousetrap": "^1.6.0",
+    "angular-notifier": "^4.1.1",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",

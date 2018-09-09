@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const authApi = require('./routers/auth.router');
 const imagesApi = require('./routers/image.router');
 const eventsApi = require('./routers/event.router');
+const reviewsApi = require('./routers/review.router');
 
 
 ///////////////////////
@@ -40,6 +41,7 @@ app.use(passport.initialize());
 app.use('/api/images', imagesApi);
 app.use('/api/auth', authApi);
 app.use('/api/events', eventsApi);
+app.use('/api/reviews', reviewsApi);
 
 //////////////////
 // Static Query

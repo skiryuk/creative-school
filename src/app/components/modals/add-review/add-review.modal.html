@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h5 class="modal-title">Добавить отзыв</h5>
+  <button type="button" class="close" aria-label="Закрыть"
+          (click)="activeModal.dismiss()">x
+  </button>
+</div>
+<form [formGroup]="reviewForm" (ngSubmit)="add()">
+  <div class="modal-body">
+    <div class="modal-overlay-spinner" *ngIf="isLoading">
+      <span class="fa fa-spinner fa-spin fa-3x"></span>
+    </div>
+    <div class="container">
+      <div class="form-group">
+        <label for="titleField">Наименование</label>
+        <textarea id="titleField" rows="4" formControlName="titleField" name="titleField" class="form-control" [(ngModel)]="model.text" style="max-height: 300px" required></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" [disabled]="isLoading"
+            [disabled]="!reviewForm.valid">
+      Добавить
+    </button>
+  </div>
+</form>

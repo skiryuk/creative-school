@@ -179,6 +179,7 @@
   color: #fff;
   text-decoration: none;
   background: #b7007a;
+  border-radius: 4px;
 }
 
 #hero .btn-get-started:hover {
@@ -900,6 +901,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 20px;
 }
 
 .reviews-more-btn {
@@ -1142,6 +1144,7 @@
   font-size: 15px;
   font-weight: bold;
   padding: 10px 20px;
+  white-space: pre;
 }
 
 .review-item.review-odd {

@@ -25,7 +25,7 @@ router.post('/add', [upload.single("file"), passport.authenticate('jwt', { sessi
     res.json({
       id: obj.id,
       isLoaded: true,
-      message: 'Мероприятие успешно создано'
+      message: 'Занятие успешно создано'
     });
   }).catch(err => {
     res.status(500).json({

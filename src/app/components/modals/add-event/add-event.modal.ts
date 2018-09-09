@@ -5,6 +5,7 @@ import {HttpResponse} from '@angular/common/http';
 import {DataService} from '../../../services/data.service';
 import {EventInfoModel} from '../../../models/event.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-event-modal',
@@ -23,7 +24,8 @@ export class AddEventModalComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal,
               private formBuilder: FormBuilder,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private notifierService: NotifierService) {
     this.createForm();
   }
 
@@ -68,11 +70,19 @@ export class AddEventModalComponent implements OnInit {
           const res = JSON.parse(event.body as any);
           this.isLoading = false;
           this.model.id = res.id;
+          this.notifierService.show({
+            type: 'success',
+            message: 'Занятие добавлено'
+          });
           this.activeModal.close(this.model);
         }
     }, err => {
       this.isLoading = false;
-      console.log('Произошла ошибка при создании мероприятия');
+        console.error(err);
+        this.notifierService.show({
+          type: 'error',
+          message: err
+        });
     });
   }
 

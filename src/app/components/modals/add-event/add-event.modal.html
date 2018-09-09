@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h5 class="modal-title">Создать событие</h5>
+  <h5 class="modal-title">Добавить событие</h5>
   <button type="button" class="close" aria-label="Закрыть"
           (click)="activeModal.dismiss()">x
   </button>
@@ -57,7 +57,7 @@
   <div class="modal-footer">
     <button class="btn btn-success" [disabled]="isLoading"
             [disabled]="!eventForm.valid || !selectedFiles || !(model.price || model.abonement)">
-      Создать
+      Добавить
     </button>
   </div>
 </form>

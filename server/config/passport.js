@@ -11,7 +11,6 @@ module.exports = function(passport) {
   opts.ignoreExpiration = false;
   opts.secretOrKey = config.secret;
   passport.use(new JwtStrategy(opts, function(jwtPayload, done) {
-
     db.users.find({
       where: {
         id: jwtPayload.id
@@ -25,6 +24,5 @@ module.exports = function(passport) {
         }
       })
       .catch(err => done(err, false));
-
   }));
 };

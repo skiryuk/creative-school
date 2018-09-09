@@ -7,6 +7,10 @@ const config = require('../config/config')[env];
 
 const db = require('../db.js');
 
+require('pg').types.setTypeParser(1114, function(stringValue) {
+  return new Date(stringValue.replace(" ", "T") + 'Z');
+});
+
 router.post('/login', (req, res) => {
   db.users.find({
     where: {

@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {HttpResponse} from '@angular/common/http';
 import {DataService} from '../../../services/data.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-photo-modal',
@@ -15,7 +16,9 @@ export class AddPhotoModalComponent implements OnInit {
   currentFileUpload: File;
   isLoading = false;
 
-  constructor(public activeModal: NgbActiveModal, private dataService: DataService) { }
+  constructor(public activeModal: NgbActiveModal,
+              private dataService: DataService,
+              private notifierService: NotifierService) { }
 
   ngOnInit() {
   }
@@ -31,11 +34,19 @@ export class AddPhotoModalComponent implements OnInit {
       if (event instanceof HttpResponse) {
         const res = JSON.parse(event.body as any);
         this.isLoading = false;
+        this.notifierService.show({
+          type: 'success',
+          message: 'Фото добавлено'
+        });
         this.activeModal.close(res.id);
       }
     }, err => {
       this.isLoading = false;
-      console.log('Произошла ошибка при создании фото');
+      console.error(err);
+      this.notifierService.show({
+        type: 'error',
+        message: err
+      });
     });
   }
 }

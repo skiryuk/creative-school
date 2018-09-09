@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Utils} from '../../utils/utils';
 import {Description, DescriptionStrategy, GalleryService, Image} from '@ks89/angular-modal-gallery';
 import {EasingLogic} from 'ngx-page-scroll';
@@ -11,6 +11,9 @@ import {AuthService} from '../../services/auth.service';
 import {AddPhotoModalComponent} from '../../components/modals/add-photo/add-photo.modal';
 import {AddEventModalComponent} from '../../components/modals/add-event/add-event.modal';
 import {EventInfoModel} from '../../models/event.model';
+import {AddReviewModalComponent} from '../../components/modals/add-review/add-review.modal';
+import {forkJoin} from 'rxjs';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-main-page',
@@ -47,123 +50,17 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   images: Array<Image> = [];
 
-  /*images: Image[] = [
-    new Image(0, {
-      img: 'http://localhost:4200/assets/img/gallery/1.png'
-    }),
-    new Image(1, {
-      img: 'http://localhost:4200/assets/img/gallery/2.png'
-    }),
-    new Image(2, {
-      img: 'http://localhost:4200/assets/img/gallery/3.png'
-    }),
-    new Image(3, {
-      img: 'http://localhost:4200/assets/img/gallery/4.png'
-    }),
-    new Image(4, {
-      img: 'http://localhost:4200/assets/img/gallery/5.png'
-    }),
-    new Image(5, {
-      img: 'http://localhost:4200/assets/img/gallery/6.png'
-    }),
-    new Image(6, {
-      img: 'http://localhost:4200/assets/img/gallery/7.png'
-    }),
-    new Image(7, {
-      img: 'http://localhost:4200/assets/img/gallery/8.png'
-    }),
-    new Image(8, {
-      img: 'http://localhost:4200/assets/img/gallery/9.png'
-    }),
-    new Image(9, {
-      img: 'http://localhost:4200/assets/img/gallery/10.png'
-    }),
-    new Image(10, {
-      img: 'http://localhost:4200/assets/img/gallery/11.png'
-    }),
-    new Image(11, {
-      img: 'http://localhost:4200/assets/img/gallery/12.png'
-    }),
-    new Image(12, {
-      img: 'http://localhost:4200/assets/img/gallery/13.png'
-    }),
-    new Image(13, {
-      img: 'http://localhost:4200/assets/img/gallery/14.png'
-    }),
-    new Image(14, {
-      img: 'http://localhost:4200/assets/img/gallery/15.png'
-    }),
-    new Image(15, {
-      img: 'http://localhost:4200/assets/img/gallery/16.png'
-    })
-  ];*/
-
-  lessons = [{
-    id: 1,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo.png',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 2000,
-    date: '2018-02-10T11:30:00',
-    abonement: false
-  }, {
-    id: 2,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo2.jpg',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 0,
-    date: '2018-02-10T11:30:00',
-    abonement: true
-  }, {
-    id: 3,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo3.jpg',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 2000,
-    date: '2018-02-10T11:30:00',
-    abonement: false
-  }, {
-    id: 4,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo4.jpg',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 0,
-    date: '2018-02-10T11:30:00',
-    abonement: true
-  }, {
-    id: 5,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo.png',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 2000,
-    date: '2018-02-10T11:30:00',
-    abonement: false
-  }, {
-    id: 6,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo.png',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 0,
-    date: '2018-02-10T11:30:00',
-    abonement: true
-  }, {
-    id: 7,
-    name: 'правополушарное рисование для начинающих',
-    img: '../../../assets/img/lesson-photo.png',
-    description: 'Занятие предназначено для тех, кто никогда не брал кисточку в руки. На занятии вы получите навыки рисования, используя правополушарный метод',
-    price: 2000,
-    date: '2018-02-10T11:30:00',
-    abonement: false
-  }];
-
   customDescription: Description = {
     strategy: DescriptionStrategy.HIDE_IF_EMPTY
   };
 
+  isLoading = false;
+
   constructor(protected galleryService: GalleryService,
               protected authService: AuthService,
               protected dataService: DataService,
-              protected modalService: NgbModal) {
+              protected modalService: NgbModal,
+              protected notifierService: NotifierService) {
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -188,7 +85,26 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.dataService.getReviews()
+    forkJoin(
+      this.dataService.getEvents(this.eventCategory),
+      this.dataService.getImages(),
+      this.dataService.getReviews()
+    ).subscribe(res => {
+      this.events = res[0];
+      this.images = res[1].map(image =>
+        new Image(image.id, { img: `/api/images/view/${image.id}`}));;
+      this.reviews = res[2];
+      this.isLoading = false;
+    }, err => {
+      console.error(err);
+      this.notifierService.show({
+        type: 'error',
+        message: err
+      });
+    });
+
+
+    /*this.dataService.getReviews()
       .subscribe(reviews => {
         this.reviews = reviews;
       });
@@ -202,7 +118,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.dataService.getEvents(this.eventCategory)
       .subscribe(events => {
         this.events = events;
-      });
+      });*/
   }
 
   ngAfterViewInit() {
@@ -269,6 +185,14 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
   }
 
+  openAddReviewModal() {
+    const modalRef = this.modalService.open(AddReviewModalComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.result.then((review: ReviewModel) => {
+        this.reviews = [review, ...this.reviews];
+    }, (reason) => {
+    });
+  }
+
   isAuth() {
     return this.authService.isAuth();
   }
@@ -285,6 +209,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     return this.dataService.currentEventsPage < this.dataService.totalEventsPage;
   }
 
+  hasMoreReviews() {
+    return this.dataService.currentReviewsPage < this.dataService.totalReviewsPage;
+  }
+
   showMoreImgs() {
     this.dataService.getImages()
       .subscribe(images => {
@@ -298,6 +226,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.dataService.getEvents(this.eventCategory)
       .subscribe(events => {
         this.events = [...this.events, ...events];
+      });
+  }
+
+  showMoreReviews() {
+    this.dataService.getReviews()
+      .subscribe(reviews => {
+        this.reviews = [...this.reviews, ...reviews];
       });
   }
 

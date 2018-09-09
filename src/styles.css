@@ -5,6 +5,7 @@
 @import "~primeicons/primeicons.css";
 @import "~primeng/resources/themes/nova-light/theme.css";
 @import "~primeng/resources/primeng.min.css";
+@import "~angular-notifier/styles.css";
 
 html, body {
   display: flex;
@@ -94,4 +95,15 @@ input[type="file"]:focus {
 .form-control:focus {
   box-shadow: none;
   border-color: #b7007a;
+}
+
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active, .show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #b7007a;
+  border-color: #b7007a;
+}
+
+.btn-success:focus, .btn-success.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus, .show > .btn-success.dropdown-toggle:focus{
+  box-shadow: none;
 }

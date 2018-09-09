@@ -24,5 +24,6 @@ db.sequelize = sequelize;
 db.images = require('./models/db/image.model.js')(sequelize, Sequelize);
 db.users = require('./models/db/user.model.js')(sequelize, Sequelize);
 db.events = require('./models/db/event.model.js')(sequelize, Sequelize);
+db.reviews = require('./models/db/review.model.js')(sequelize, Sequelize);
 
 module.exports = db;

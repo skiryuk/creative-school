@@ -7,6 +7,10 @@ const passport = require('passport');
 require('../config/passport')(passport);
 const db = require('../db.js');
 
+require('pg').types.setTypeParser(1114, function(stringValue) {
+  return new Date(stringValue.replace(" ", "T") + 'Z');
+});
+
 router.post('/upload', [upload.single("file"), passport.authenticate('jwt', { session: false})], (req, res) => {
   db.images.create({
     type: req.file.mimetype,
