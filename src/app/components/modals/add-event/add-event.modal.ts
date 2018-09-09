@@ -4,7 +4,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {HttpResponse} from '@angular/common/http';
 import {DataService} from '../../../services/data.service';
 import {EventInfoModel} from '../../../models/event.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {NotifierService} from 'angular-notifier';
 
 @Component({
@@ -18,15 +17,12 @@ export class AddEventModalComponent implements OnInit {
   isLoading = false;
   croppedImage: any;
   model: EventInfoModel = new EventInfoModel();
-  eventForm: FormGroup;
 
   ru: any;
 
   constructor(public activeModal: NgbActiveModal,
-              private formBuilder: FormBuilder,
               private dataService: DataService,
               private notifierService: NotifierService) {
-    this.createForm();
   }
 
   ngOnInit() {
@@ -40,17 +36,6 @@ export class AddEventModalComponent implements OnInit {
       today: 'Сегодня',
       clear: 'Очистить'
     };
-  }
-
-  private createForm() {
-    this.eventForm = this.formBuilder.group({
-      dateField: null,
-      titleField: '',
-      descriptionField: '',
-      priceField: null,
-      fileField: null,
-      abonementField: false
-    });
   }
 
   selectFile(event) {
@@ -123,5 +108,9 @@ export class AddEventModalComponent implements OnInit {
 
   onChangeType(type: string) {
     this.model.type = +type;
+  }
+
+  isValid() {
+    return this.model.date && this.model.title && this.selectedFiles && (this.model.price || this.model.abonement);
   }
 }

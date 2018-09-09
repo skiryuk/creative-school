@@ -144,7 +144,7 @@ router.post('/join', (req, res) => {
     html: `${joinEvent.email ? '<b>Электронная почта: </b>' + joinEvent.email + '<br>' : ''}
            ${joinEvent.phone ? '<b>Телефон: </b>+' + joinEvent.phone + '<br>' : ''}
            ${joinEvent.name ? '<b>Имя: </b>' + joinEvent.name + '<br>' : ''}
-           <b>Записался на занятие:</b><br><br>
+           <b>Записался на занятие:</b><br>
            ${event.title}<br>
            ${dateFormat(event.date, 'dd.mm.yyyy HH:MM')}<br>
            ${event.abonement ? 'Абонемент<br>' : ''}

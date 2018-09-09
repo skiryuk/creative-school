@@ -29,7 +29,7 @@ const config = {
       pass:   '692746b1a2fc354a774c2e1a9005e1a122566d60032f32798de1f318855a91be',
       dialect: 'postgres',
       pool: {
-        max: 10,
+        max: 5,
         min: 0,
         acquire: 30000,
         idle: 10000
