@@ -82,4 +82,31 @@ router.get('/view/:id', (req, res) => {
   });
 });
 
+router.get('/remove/:id', (req, res) => {
+  db.images.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(deletedRecord => {
+      if (deletedRecord === 1){
+        res.status(200).json({
+          status: 'success',
+          message: 'Фото успешно удалено'
+        });
+      } else {
+        res.status(404).json({
+          status: 'error',
+          message: 'Фото не найдено в БД'
+        })
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        status: 'error',
+        message: err
+      })
+    });
+});
+
 module.exports = router;

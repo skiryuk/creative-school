@@ -107,3 +107,27 @@ input[type="file"]:focus {
 .btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus, .show > .btn-success.dropdown-toggle:focus{
   box-shadow: none;
 }
+
+.remove-icon-button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 1;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+.remove-icon-button:hover {
+  background: rgba(217,0,145,0.7);
+}
+
+.remove-icon-button .remove-icon {
+  background: url('./assets/svg/icons/close-icon.svg') no-repeat;
+  width: 18px;
+  height: 18px;
+}

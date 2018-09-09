@@ -92,33 +92,16 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     ).subscribe(res => {
       this.events = res[0];
       this.images = res[1].map(image =>
-        new Image(image.id, { img: `/api/images/view/${image.id}`}));;
+        new Image(image.id, { img: `/api/images/view/${image.id}`}));
       this.reviews = res[2];
       this.isLoading = false;
     }, err => {
       console.error(err);
       this.notifierService.show({
         type: 'error',
-        message: err
+        message: JSON.stringify(err)
       });
     });
-
-
-    /*this.dataService.getReviews()
-      .subscribe(reviews => {
-        this.reviews = reviews;
-      });
-
-    this.dataService.getImages()
-      .subscribe(images => {
-        this.images = images.map(image =>
-          new Image(image.id, { img: `/api/images/view/${image.id}`}));
-      });
-
-    this.dataService.getEvents(this.eventCategory)
-      .subscribe(events => {
-        this.events = events;
-      });*/
   }
 
   ngAfterViewInit() {
@@ -250,5 +233,38 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   getEventPhotoUrl(id: number) {
     return `/api/events/view/${id}`;
+  }
+
+  onRemoveEvent(id: number) {
+    this.dataService.removeEvent(id)
+      .subscribe(res => {
+        this.events = this.events.filter(event => event.id !== id);
+        this.notifierService.notify('success', 'Занятие успешно удалено');
+      }, err => {
+        console.error(err);
+        this.notifierService.notify('error', JSON.stringify(err));
+      });
+  }
+
+  onRemovePhoto(id: number) {
+    this.dataService.removeImage(id)
+      .subscribe(res => {
+        this.images = this.images.filter(image => image.id !== id);
+        this.notifierService.notify('success', 'Фото успешно удалено');
+      }, err => {
+        console.error(err);
+        this.notifierService.notify('error', JSON.stringify(err));
+      });
+  }
+
+  onRemoveReview(id: number) {
+    this.dataService.removeReview(id)
+      .subscribe(res => {
+        this.reviews = this.reviews.filter(review => review.id !== id);
+        this.notifierService.notify('success', 'Отзыв успешно удален');
+      }, err => {
+        console.error(err);
+        this.notifierService.notify('error', JSON.stringify(err));
+      });
   }
 }

@@ -42,10 +42,10 @@ export class LoginModalComponent {
       this.activeModal.close();
     }, err => {
       this.isLoading = false;
-      console.log(err);
+      console.error(err);
       this.notifierService.show({
         type: 'error',
-        message: err
+        message: JSON.stringify(err)
       });
     });
   }

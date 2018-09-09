@@ -121,6 +121,9 @@
       <div class="event-items-panel container-fluid">
         <div class="row justify-content-center">
           <div class="event-item-panel col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let event of events">
+            <div class="remove-icon-button" *ngIf="isAuth()" (click)="onRemoveEvent(event.id)">
+              <div class="remove-icon"></div>
+            </div>
             <div class="event-item">
               <div class="event-photo-wrapper">
                 <img class="event-photo" src="{{getEventPhotoUrl(event.id)}}">
@@ -218,6 +221,9 @@
 
         <ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true">
           <ngxMasonryItem *ngFor="let picture of images; let i = index" class="masonry-item">
+            <div class="remove-icon-button" *ngIf="isAuth()" (click)="onRemovePhoto(picture.id)">
+              <div class="remove-icon"></div>
+            </div>
             <img src="{{picture.modal.img}}" (click)="onClickPhoto(i)">
           </ngxMasonryItem>
         </ngx-masonry>
@@ -248,12 +254,22 @@
           <ng-container *ngFor="let review of reviews; let i = index">
             <ng-template [ngIf]="i % 2 === 0" [ngIfElse]="evenReviewTmpl">
               <div class="row mt15">
-                <div class="review-item review-odd col-md-7">{{ review.text }}</div>
+                <div class="review-item review-odd col-md-7">
+                  <div class="remove-icon-button" *ngIf="isAuth()" (click)="onRemoveReview(review.id)">
+                    <div class="remove-icon"></div>
+                  </div>
+                  <div>{{ review.text }}</div>
+                </div>
               </div>
             </ng-template>
             <ng-template #evenReviewTmpl>
               <div class="row justify-content-end mt15">
-                <div class="review-item col-md-7">{{ review.text }}</div>
+                <div class="review-item col-md-7">
+                  <div class="remove-icon-button" *ngIf="isAuth()" (click)="onRemoveReview(review.id)">
+                    <div class="remove-icon"></div>
+                  </div>
+                  <div>{{ review.text }}</div>
+                </div>
               </div>
             </ng-template>
           </ng-container>

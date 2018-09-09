@@ -45,7 +45,7 @@ export class AddPhotoModalComponent implements OnInit {
       console.error(err);
       this.notifierService.show({
         type: 'error',
-        message: err
+        message: JSON.stringify(err)
       });
     });
   }

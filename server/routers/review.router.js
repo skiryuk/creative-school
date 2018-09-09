@@ -58,4 +58,31 @@ router.get('/get/:page', (req, res) => {
     })
 });
 
+router.get('/remove/:id', (req, res) => {
+  db.reviews.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(deletedRecord => {
+      if (deletedRecord === 1){
+        res.status(200).json({
+          status: 'success',
+          message: 'Отзыв успешно удален'
+        });
+      } else {
+        res.status(404).json({
+          status: 'error',
+          message: 'Отзыв не найден в БД'
+        })
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        status: 'error',
+        message: err
+      })
+    });
+});
+
 module.exports = router;

@@ -66,6 +66,27 @@ export class DataService {
     return this.http.request(req);
   }
 
+  removeEvent(id: number) {
+    return this.http.get(`/api/events/remove/${id}`)
+      .pipe(map((res: any) => {
+        return res;
+      }));
+  }
+
+  removeImage(id: number) {
+    return this.http.get(`/api/images/remove/${id}`)
+      .pipe(map((res: any) => {
+        return res;
+      }));
+  }
+
+  removeReview(id: number) {
+    return this.http.get(`/api/reviews/remove/${id}`)
+      .pipe(map((res: any) => {
+        return res;
+      }));
+  }
+
   getEvents(categoryId: number): Observable<EventInfoModel[]> {
     return this.http.get(`/api/events/get/${categoryId}/${++this.currentEventsPage}`)
       .pipe(map((res: { data: EventInfoModel[], count: number, pages: number}) => {
