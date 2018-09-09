@@ -15,6 +15,7 @@ import {AddReviewModalComponent} from '../../components/modals/add-review/add-re
 import {forkJoin} from 'rxjs';
 import {NotifierService} from 'angular-notifier';
 import {FeedbackModel} from '../../models/feedback.model';
+import {JoinEventsModalComponent} from '../../components/modals/join-events/join-events.modal';
 
 @Component({
   selector: 'app-main-page',
@@ -59,8 +60,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   isSending = false;
 
   modelFeedback = new FeedbackModel();
-
-  EMAIL_REGEXP = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
 
   constructor(protected galleryService: GalleryService,
               protected authService: AuthService,
@@ -180,6 +179,11 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         this.reviews = [review, ...this.reviews];
     }, (reason) => {
     });
+  }
+
+  openJoinEventModal(event: EventInfoModel) {
+    const modalRef = this.modalService.open(JoinEventsModalComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.model.event = event;
   }
 
   isAuth() {
@@ -313,12 +317,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       });
   }
 
-  isValidEmail(feedbackEmail: string) {
-    return this.EMAIL_REGEXP.test(feedbackEmail);
-  }
-
   isDisabledSendFeedbackBtn() {
     return !((this.modelFeedback.email || this.modelFeedback.phone) && this.modelFeedback.question &&
-      (this.modelFeedback.email ? this.isValidEmail(this.modelFeedback.email) : true));
+      (this.modelFeedback.email ? Utils.isValidEmail(this.modelFeedback.email) : true));
   }
 }

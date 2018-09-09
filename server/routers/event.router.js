@@ -5,6 +5,12 @@ const passport = require('passport');
 require('../config/passport')(passport);
 const upload = require('../config/multer.config.js');
 const stream = require('stream');
+const nodemailer = require('nodemailer');
+
+const env = process.env.NODE_ENV || "development";
+const config = require('../config/config')[env];
+
+const dateFormat = require('dateformat');
 
 require('pg').types.setTypeParser(1114, function(stringValue) {
   return new Date(stringValue.replace(" ", "T") + 'Z');
@@ -118,6 +124,46 @@ router.get('/remove/:id', (req, res) => {
         message: err
       })
     });
+});
+
+router.post('/join', (req, res) => {
+  const joinEvent = req.body;
+  const event = joinEvent.event;
+  const transport = nodemailer.createTransport({
+    service: "Yandex",
+    auth: {
+      user: config.mail.user,
+      pass: config.mail.pass
+    }
+  });
+
+  const mailOptions = {
+    from: '"Рисуем Пермь" <risuemperm59@yandex.ru>',
+    to: 'risuemperm59@yandex.ru',
+    subject: 'Запись на занятие',
+    html: `${joinEvent.email ? '<b>Электронная почта: </b>' + joinEvent.email + '<br>' : ''}
+           ${joinEvent.phone ? '<b>Телефон: </b>+' + joinEvent.phone + '<br>' : ''}
+           ${joinEvent.name ? '<b>Имя: </b>' + joinEvent.name + '<br>' : ''}
+           <b>Записался на занятие:</b><br><br>
+           ${event.title}<br>
+           ${dateFormat(event.date, 'dd.mm.yyyy HH:MM')}<br>
+           ${event.abonement ? 'Абонемент<br>' : ''}
+           ${event.price ? event.price + 'р.' : ''}
+           `
+  };
+
+  transport.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      res.status(500).json({
+        status: 'error',
+        message: err
+      })
+    }
+    res.status(200).json({
+      status: 'success',
+      message: 'Запись на занятие произошла успешно'
+    })
+  });
 });
 
 module.exports = router;

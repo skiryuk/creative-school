@@ -2,14 +2,17 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 
+const env = process.env.NODE_ENV || "development";
+const config = require('../config/config')[env];
+
 router.post('/send/feedback', (req, res) => {
   const feedback = req.body;
   feedback.question = feedback.question.replace(/\n/g, "<br>");
   const transport = nodemailer.createTransport({
     service: "Yandex",
     auth: {
-      user: "risuemperm59",
-      pass: "QSXaz#2018"
+      user: config.mail.user,
+      pass: config.mail.pass
     }
   });
 
@@ -18,7 +21,7 @@ router.post('/send/feedback', (req, res) => {
     to: 'risuemperm59@yandex.ru',
     subject: 'Обратная связь',
     html: `${feedback.email ? '<b>Электронная почта: </b>' + feedback.email + '<br>' : ''}
-           ${feedback.phone ? '<b>Телефон: </b>' + feedback.email + '<br>' : ''}
+           ${feedback.phone ? '<b>Телефон: </b>+' + feedback.phone + '<br>' : ''}
            <b>Сообщение:</b><br>${feedback.question}`
   };
 

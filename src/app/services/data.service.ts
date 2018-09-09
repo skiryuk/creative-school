@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {ImageModel} from '../models/image.model';
 import {EventInfoModel} from '../models/event.model';
 import {FeedbackModel} from '../models/feedback.model';
+import {JoinEventModel} from '../models/join-event.model';
 
 @Injectable()
 export class DataService {
@@ -65,6 +66,13 @@ export class DataService {
     });
 
     return this.http.request(req);
+  }
+
+  joinEvent(joinEvent: JoinEventModel): Observable<any> {
+    return this.http.post(`/api/events/join`, joinEvent)
+      .pipe(map((res: any) => {
+        return res;
+      }));
   }
 
   removeEvent(id: number) {

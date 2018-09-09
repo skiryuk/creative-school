@@ -22,6 +22,7 @@ import {CalendarModule} from 'primeng/primeng';
 import {AddReviewModalComponent} from './components/modals/add-review/add-review.modal';
 import {NotifierModule} from 'angular-notifier';
 import {NgxMaskModule} from 'ngx-mask';
+import {JoinEventsModalComponent} from './components/modals/join-events/join-events.modal';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent }
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     LoginModalComponent,
     AddPhotoModalComponent,
     AddEventModalComponent,
-    AddReviewModalComponent
+    AddReviewModalComponent,
+    JoinEventsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +97,7 @@ const appRoutes: Routes = [
   entryComponents: [LoginModalComponent,
                     AddPhotoModalComponent,
                     AddEventModalComponent,
-                    AddReviewModalComponent]
+                    AddReviewModalComponent,
+                    JoinEventsModalComponent]
 })
 export class AppModule { }

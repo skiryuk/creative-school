@@ -2,6 +2,8 @@
 
 export class Utils {
 
+  static EMAIL_REGEXP = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+
   static getMonthName(month: number) {
     switch (month) {
       case 0:
@@ -76,5 +78,9 @@ export class Utils {
         resolve((window as any).ymaps);
       }).catch(e => reject(e));
     });
+  }
+
+  static isValidEmail(email) {
+    return Utils.EMAIL_REGEXP.test(email);
   }
 }

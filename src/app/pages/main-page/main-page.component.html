@@ -133,7 +133,7 @@
               <div class="event-name">{{event.title}}</div>
               <div class="event-price">{{event.abonement ? 'АБОНЕМЕНТ' : event.price + 'р.'}}</div>
               <div class="event-join-button-panel">
-                <div class="event-join-button">записаться</div>
+                <div class="event-join-button" (click)="openJoinEventModal(event)">записаться</div>
               </div>
             </div>
           </div>
