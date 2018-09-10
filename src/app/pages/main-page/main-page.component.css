@@ -1145,7 +1145,7 @@
   font-size: 15px;
   font-weight: bold;
   padding: 10px 20px;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .review-item.review-odd {
