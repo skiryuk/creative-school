@@ -57,6 +57,32 @@ app.listen(process.env.PORT || 8080, function () {
   console.log('\n' + '**********************************');
   console.log('REST API Running');
   console.log('**********************************' + '\n');
+
+  if (process.env.NODE_ENV === "production") {
+    function startKeepAlive() {
+      setInterval(() => {
+        const options = {
+          host: 'creative-school.herokuapp.com',
+          port: 80,
+          path: '/'
+        };
+        http.get(options, (res) => {
+          res.on('data', (chunk) => {
+            try {
+              // optional logging... disable after it's working
+              console.log("HEROKU RESPONSE: " + chunk);
+            } catch (err) {
+              console.log(err.message);
+            }
+          });
+        }).on('error', function (err) {
+          console.log("Error: " + err.message);
+        });
+      }, 20 * 60 * 1000); // load every 20 minutes
+    }
+
+    startKeepAlive();
+  }
 });
 
 ////////////////////
