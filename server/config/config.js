@@ -29,10 +29,10 @@ const config = {
       pass:   '692746b1a2fc354a774c2e1a9005e1a122566d60032f32798de1f318855a91be',
       dialect: 'postgres',
       pool: {
-        max: 5,
+        max: 10,
         min: 0,
         acquire: 30000,
-        idle: 1000
+        idle: 30000
       }
     },
     secret: 'creativeSecret',
