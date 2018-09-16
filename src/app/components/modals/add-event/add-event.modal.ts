@@ -111,6 +111,6 @@ export class AddEventModalComponent implements OnInit {
   }
 
   isValid() {
-    return this.model.date && this.model.title && this.selectedFiles && (this.model.price || this.model.abonement);
+    return this.model.date && this.model.title && this.selectedFiles && this.model.price;
   }
 }

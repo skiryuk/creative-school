@@ -12,16 +12,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     date: {
-      type: Sequelize.DATE
+      type: Sequelize.STRING
     },
     description: {
       type: Sequelize.STRING
     },
-    abonement: {
-      type: Sequelize.BOOLEAN
-    },
     price: {
-      type: Sequelize.FLOAT
+      type: Sequelize.STRING
     },
     mime_type: {
       type: Sequelize.STRING

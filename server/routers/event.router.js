@@ -22,7 +22,6 @@ router.post('/add', [upload.single("file"), passport.authenticate('jwt', { sessi
     title: fileInfo.title,
     description: fileInfo.description,
     date: fileInfo.date,
-    abonement: fileInfo.abonement,
     price: fileInfo.price,
     type: fileInfo.type,
     mime_type: (req.file) ? req.file.mimetype : null,
@@ -54,7 +53,7 @@ router.get('/get/:category/:page', (req, res) => {
       let pages = Math.ceil(data.count / limit);
       offset = limit * (page - 1);
       return db.events.findAll({
-        attributes: ['id', 'title', 'description', 'date', 'abonement', 'price', 'type'],
+        attributes: ['id', 'title', 'description', 'date', 'price', 'type'],
         limit: limit,
         offset: offset,
         where: {
@@ -146,8 +145,7 @@ router.post('/join', (req, res) => {
            ${joinEvent.name ? '<b>Имя: </b>' + joinEvent.name + '<br>' : ''}
            <b>Записался на занятие:</b><br>
            ${event.title}<br>
-           ${dateFormat(event.date, 'dd.mm.yyyy HH:MM')}<br>
-           ${event.abonement ? 'Абонемент<br>' : ''}
+           ${event.date}<br>
            ${event.price ? event.price + 'р.' : ''}
            `
   };

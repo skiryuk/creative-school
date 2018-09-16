@@ -100,11 +100,6 @@ export class DataService {
     return this.http.get(`/api/events/get/${categoryId}/${++this.currentEventsPage}`)
       .pipe(map((res: { data: EventInfoModel[], count: number, pages: number}) => {
         this.totalEventsPage = res.pages;
-        res.data.forEach(d => {
-          if (d.date) {
-            d.date = new Date(d.date);
-          }
-        });
         return res.data as EventInfoModel[];
       }));
   }

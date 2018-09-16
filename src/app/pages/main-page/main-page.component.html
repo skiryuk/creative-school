@@ -37,7 +37,7 @@
 
     <div id="nav-social-buttons">
       <a class="nav-social-button vk-icon"></a>
-      <a class="nav-social-button fb-icon"></a>
+      <!--<a class="nav-social-button fb-icon"></a>-->
       <a href="https://www.instagram.com/risuempermcom" target="_blank" class="nav-social-button inst-icon"></a>
     </div>
   </div>
@@ -54,7 +54,7 @@
   <div class="mobile-menu-item"><a href="#" (click)="logout()" *ngIf="isAuth()">Выйти</a></div>
   <div class="mobile-menu-social-buttons">
     <a class="mobile-menu-social-button vk-icon"></a>
-    <a class="mobile-menu-social-button fb-icon"></a>
+    <!--<a class="mobile-menu-social-button fb-icon"></a>-->
     <a href="https://www.instagram.com/risuempermcom" target="_blank" class="mobile-menu-social-button inst-icon"></a>
   </div>
 </div>
@@ -129,11 +129,15 @@
                 <img class="event-photo" src="{{getEventPhotoUrl(event.id)}}">
                 <div class="event-description">{{event.description}}</div>
               </div>
-              <div class="event-date">{{getFormattedDate(event.date)}}</div>
-              <div class="event-name">{{event.title}}</div>
-              <div class="event-price">{{event.abonement ? 'АБОНЕМЕНТ' : event.price + 'р.'}}</div>
-              <div class="event-join-button-panel">
-                <div class="event-join-button" (click)="openJoinEventModal(event)">записаться</div>
+              <div class="event-info-wrapper">
+                <div>
+                  <div class="event-date">{{event.date}}</div>
+                  <div class="event-name">{{event.title}}</div>
+                  <div class="event-price">{{event.price}}</div>
+                </div>
+                <div class="event-join-button-panel">
+                  <div class="event-join-button" (click)="openJoinEventModal(event)">записаться</div>
+                </div>
               </div>
             </div>
           </div>
