@@ -697,6 +697,7 @@
 .event-description {
   display: none;
   font-size: 14px;
+  white-space: pre-wrap;
 }
 
 .event-photo-wrapper {
