@@ -1162,13 +1162,22 @@
   font-weight: bold;
   padding: 30px 20px;
   white-space: pre-wrap;
+  justify-content: flex-end;
   text-align: right;
 }
 
 .review-item.review-odd {
   background: #393778;
   color: #fff;
+  justify-content: flex-start;
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .review-item {
+    justify-content: flex-start;
+    text-align: left;
+  }
 }
 
 .five-years-panel {
