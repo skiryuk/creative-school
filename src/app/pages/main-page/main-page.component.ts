@@ -71,7 +71,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event: Event): void {
     const scrollTop = (<any>$event.target).scrollingElement ? (<any>$event.target).scrollingElement.scrollTop : ((<any>$event.target).documentElement) ? (<any>$event.target).documentElement.scrollTop : null;
-    console.log(scrollTop);
     this.isHeaderCollapse = scrollTop > 100;
   }
 
@@ -242,8 +241,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getEventPhotoUrl(id: number) {
-    return `/api/events/view/${id}`;
+  getEventPhotoUrl(event: EventInfoModel) {
+    return (event.hasImage) ? `/api/events/view/${event.id}` : `assets/img/event-image-default.jpg`;
   }
 
   onRemoveEvent(id: number) {

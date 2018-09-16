@@ -126,8 +126,8 @@
             </div>
             <div class="event-item">
               <div class="event-photo-wrapper">
-                <img class="event-photo" src="{{getEventPhotoUrl(event.id)}}">
-                <div class="event-description">{{event.description}}</div>
+                <img class="event-photo" src="{{getEventPhotoUrl(event)}}">
+                <div class="event-description" *ngIf="event.description">{{event.description}}</div>
               </div>
               <div class="event-info-wrapper">
                 <div>

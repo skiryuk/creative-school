@@ -49,7 +49,8 @@ export class AddEventModalComponent implements OnInit {
 
   add() {
     this.isLoading = true;
-    this.dataService.addEvent(this.model, (this.selectedFiles && this.selectedFiles.length > 0) ? this.selectedFiles[0] : null)
+    this.model.hasImage = (this.selectedFiles && this.selectedFiles.length > 0);
+    this.dataService.addEvent(this.model, this.model.hasImage ? this.selectedFiles[0] : null)
       .subscribe(event => {
         if (event instanceof HttpResponse) {
           const res = JSON.parse(event.body as any);
@@ -111,6 +112,6 @@ export class AddEventModalComponent implements OnInit {
   }
 
   isValid() {
-    return this.model.date && this.model.title && this.selectedFiles && this.model.price;
+    return this.model.date && this.model.title && this.model.price;
   }
 }

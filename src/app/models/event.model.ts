@@ -7,4 +7,5 @@ export class EventInfoModel {
   date: string;
   price: string;
   type = 1;
+  hasImage = false;
 }

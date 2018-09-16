@@ -20,11 +20,16 @@ module.exports = (sequelize, Sequelize) => {
     price: {
       type: Sequelize.STRING
     },
-    mime_type: {
-      type: Sequelize.STRING
+    mimeType: {
+      type: Sequelize.STRING,
+      field: 'mime_type'
     },
     data: {
       type: Sequelize.BLOB('long')
+    },
+    hasImage: {
+      type: Sequelize.BOOLEAN,
+      field: 'has_image'
     }
   });
 

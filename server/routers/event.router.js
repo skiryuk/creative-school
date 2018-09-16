@@ -24,7 +24,8 @@ router.post('/add', [upload.single("file"), passport.authenticate('jwt', { sessi
     date: fileInfo.date,
     price: fileInfo.price,
     type: fileInfo.type,
-    mime_type: (req.file) ? req.file.mimetype : null,
+    hasImage: fileInfo.hasImage,
+    mimeType: (req.file) ? req.file.mimetype : null,
     data: (req.file) ? req.file.buffer : null
   }).then(obj => {
     res.json({
@@ -53,7 +54,7 @@ router.get('/get/:category/:page', (req, res) => {
       let pages = Math.ceil(data.count / limit);
       offset = limit * (page - 1);
       return db.events.findAll({
-        attributes: ['id', 'title', 'description', 'date', 'price', 'type'],
+        attributes: ['id', 'title', 'description', 'date', 'price', 'type', 'hasImage'],
         limit: limit,
         offset: offset,
         where: {
