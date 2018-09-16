@@ -62,7 +62,7 @@ app.listen(process.env.PORT || 8080, function () {
     function startKeepAlive() {
       setInterval(() => {
         const options = {
-          host: 'creative-school.herokuapp.com',
+          host: 'creativeschool.herokuapp.com',
           port: 80,
           path: '/'
         };
@@ -78,7 +78,7 @@ app.listen(process.env.PORT || 8080, function () {
         }).on('error', function (err) {
           console.log("Error: " + err.message);
         });
-      }, 20 * 60 * 1000); // load every 20 minutes
+      }, 10 * 60 * 1000); // load every 10 minutes
     }
 
     startKeepAlive();
