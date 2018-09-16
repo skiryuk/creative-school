@@ -17,16 +17,16 @@ const config = {
     secret: 'secretPwd',
     mail: {
       user: 'risuemperm59',
-      pass: 'QSXaz#2018'
+      pass: '***'
     }
   },
   production: {
     database: {
-      host:   'ec2-54-217-235-137.eu-west-1.compute.amazonaws.com',
+      host:   process.env.dbhost,
       port:   '5432',
-      db:     'devhl2o45oab5a',
-      user:   'sloulosiulsgas',
-      pass:   '692746b1a2fc354a774c2e1a9005e1a122566d60032f32798de1f318855a91be',
+      db:     process.env.dbname,
+      user:   process.env.dbuser,
+      pass:   process.env.dbpass,
       dialect: 'postgres',
       pool: {
         max: 10,
@@ -35,10 +35,10 @@ const config = {
         idle: 30000
       }
     },
-    secret: 'creativeSecret',
+    secret: process.env.secretword,
     mail: {
       user: 'risuemperm59',
-      pass: 'QSXaz#2018'
+      pass: process.env.mailpass
     }
   }
 };
