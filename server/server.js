@@ -70,8 +70,6 @@ app.listen(process.env.PORT || 8080, function () {
         http.get(options, (res) => {
           res.on('data', (chunk) => {
             try {
-              // optional logging... disable after it's working
-              console.log("HEROKU RESPONSE: " + chunk);
             } catch (err) {
               console.log(err.message);
             }
