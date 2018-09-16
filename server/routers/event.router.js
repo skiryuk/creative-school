@@ -147,7 +147,7 @@ router.post('/join', (req, res) => {
            <b>Записался на занятие:</b><br>
            ${event.title}<br>
            ${event.date}<br>
-           ${event.price ? event.price + 'р.' : ''}
+           ${event.price ? event.price : ''}
            `
   };
 
