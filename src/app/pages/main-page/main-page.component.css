@@ -1160,13 +1160,15 @@
   text-align: center;
   font-size: 15px;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 30px 20px;
   white-space: pre-wrap;
+  text-align: right;
 }
 
 .review-item.review-odd {
   background: #393778;
   color: #fff;
+  text-align: left;
 }
 
 .five-years-panel {

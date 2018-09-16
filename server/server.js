@@ -78,7 +78,7 @@ app.listen(process.env.PORT || 8080, function () {
         }).on('error', function (err) {
           console.log("Error: " + err.message);
         });
-      }, 10 * 60 * 1000); // load every 10 minutes
+      }, 10 * 60 * 1000);
     }
 
     startKeepAlive();
