@@ -110,7 +110,7 @@
 
 #hero:before {
   content: "";
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(21,122,166,0.4);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -138,6 +138,7 @@
   line-height: 56px;
   text-transform: uppercase;
   color: #fff;
+  font-family: "Lato";
 }
 
 @media (max-width: 768px) {
@@ -148,12 +149,13 @@
 }
 
 #hero h2 {
-  color: #eee;
+  color: darkblue;
   margin-bottom: 50px;
   font-size: 24px;
   margin-left: 25px;
   margin-right: 25px;
   margin-top: 15px;
+  font-family: "Lato";
 }
 
 @media (max-width: 768px) {
