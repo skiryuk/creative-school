@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   isHeaderCollapse = false;
   isOpenedMobileMenu = false;
-  eventCategory = 2;
+  eventCategory = 1;
 
   reviews: Array<ReviewModel> = [];
   events: Array<EventInfoModel> = [];
