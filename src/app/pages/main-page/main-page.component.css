@@ -607,6 +607,51 @@
   line-height: 26px;
 }
 
+#about .diplom-title .title {
+  padding: 20px 30px 0 30px;
+  width: 100%;
+  text-align: center;
+}
+
+#about .diplom-images div {
+  min-width: 410px;
+}
+
+@media (max-width: 835px) {
+  #about .diplom-images div {
+    min-width: 100%;
+  }
+}
+
+#about .diplom-images img {
+  padding: 20px 20px 0 20px;
+  height: 450px;
+}
+
+@media (max-width: 960px) {
+  #about .diplom-images img {
+    height: 500px;
+  }
+}
+
+@media (max-width: 720px) {
+  #about .diplom-images img {
+    height: 450px;
+  }
+}
+
+@media (max-width: 540px) {
+  #about .diplom-images img {
+    height: 350px;
+  }
+}
+
+@media (min-width: 960px) {
+  #about .diplom-images img {
+    height: 600px;
+  }
+}
+
 /* Events Section
 --------------------------------*/
 
